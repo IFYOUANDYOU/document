@@ -9,6 +9,8 @@
 推送远程仓库：$ git push [remoteName] [localBranchName]
  
 2）分支(branch)操作相关命令
+拉取远程分支到本地：$ git pull origin [branchName](远程分支名称)
+把远程分支拉到本地：$ git fetch origin dev（dev为远程仓库的分支名）
 查看本地分支：$ git branch
 查看远程分支：$ git branch -r
 创建本地分支：$ git branch [name] ----注意新分支创建后不会自动切换为当前分支
