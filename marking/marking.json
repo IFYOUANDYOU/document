@@ -1,0 +1,11 @@
+{
+  "disableScroll": true,
+  "pageOrientation": "auto",
+  "resizable": true,
+  "disableSwipeBack": true,
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "judge-comment": "../judge/judge"
+  }
+}
