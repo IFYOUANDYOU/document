@@ -5,6 +5,7 @@
   "disableSwipeBack": true,
   "navigationStyle": "custom",
   "navigationBarTextStyle": "white",
+  //change marking.json
   "usingComponents": {
     "judge-comment": "../judge/judge"
   }
