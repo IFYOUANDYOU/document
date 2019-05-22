@@ -3,13 +3,6 @@
 page {
   height: 100vh;
 }
-.vh {
-  position: absolute;
-  left: 0;
-  width: 0.66667vmin;
-  top: 32vmin;
-  bottom: 32vmin;
-}
 .wrapper{
   height: 100%;
   width: 100%;
