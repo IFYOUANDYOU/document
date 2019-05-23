@@ -1,9 +1,4 @@
-
-
 const app = getApp()
-
-//change something online
-
 import {
   getUnchecked,
   updateTopic,
@@ -20,18 +15,8 @@ let touchEndTime = 0;
 let lastTapTime = 0;
 let timers1;
 var my_carvas, strat_x, strat_y, end_x, end_y;
-let imgobj = {},last_vw,last_vh;
-var textArrays = [],lineArrays = [];
-var default_text_top = 0,default_text_left = 0;
 Page({
   data: {
-    vw: 0,
-    vh: 0,
-    boxTop: 0,
-    boxBot: 0,
-    barHeight: 0,
-    page_title: '阅卷',
-
     current: -1, //keycode控制
     item_current: '', //当前按下数字
     r_model: false, //键盘收起键控制
@@ -51,8 +36,8 @@ Page({
     topbar: true, //顶部导航显示隐藏
     moreKeyCode: false, //弹起更多分数按钮
     textEnd: false, //输入完成，控制
-    t_top: 0, //输入文字坐标
-    t_left: 0, //同上
+    t_top: 160, //输入文字坐标
+    t_left: 125, //同上
     t_text: "", //输入框输入的文字
     textData: [], //文字集合
     currentAns: 0,
@@ -85,7 +70,7 @@ Page({
     flag: true, //控制打分开关，防止过快点击
     answerData: [], //答案，划线，文字，集合
     propModel: false, //打分规则弹窗
-    testType: 0,//1 选择题 2 判断题 3 主观题 4 填空题 10 多选题
+    testType: 0,
     inputRule: {
       rule1: '',
       rule2: '',
@@ -96,8 +81,6 @@ Page({
     picHeight: 0,
     picTop: 0,
     move_start_x: 0, //移动初始x值
-    current_speed: 0, //当前进度
-    all_speed: 0, //总进度
     paperModel: false,
     marePic: false, //是否是大图显示
     tabType: 1, //tab用来切换题目 答案  参考答案
@@ -110,7 +93,6 @@ Page({
     imgload_height: '',
     imgload_width: '',
     screenWidth: '', //设备屏幕宽度
-    screenHeight: '', //设备屏幕高度
     float_bar: false, //菜单栏下面的小菜单
     float_type: 1,
     topic_flag: false, //查看题目
@@ -119,11 +101,30 @@ Page({
     positionY: "", //图片坐标y轴
     positionH: '', //图片坐标高度 
     oss_url: '', //oss坐标url参数
-
-    set_flag: false,//多选题规则设置
-
   },
-  
+  bindRule1(e) {
+    console.log(e)
+    this.setData({
+      'inputRule[rule1]': e.detail.value
+    })
+  },
+  bindRule2(e) {
+    this.setData({
+      'inputRule[rule2]': e.detail.value
+    })
+  },
+  bindRule3(e) {
+    this.setData({
+      'inputRule[rule3]': e.detail.value
+    })
+  },
+  // changeTab(e){ //切换tab
+  //   console.log(e.currentTarget.dataset.tab);
+  //   this.setData({
+  //     tabType:e.currentTarget.dataset.tab,
+  //     'touch.scale':1
+  //   })
+  // },
   surnBtn() {
     var swiper = this.data.swiper;
     var current = swiper.current;
@@ -218,13 +219,13 @@ Page({
   },
   onCounterPlusOne(data) { //组件函数
     console.log('组件函数', data);
-    this.sendAnswer(data.detail)
     var index = data.detail.score;
-    var picHeight = this.data.imgload_height;
-    var picWidth = this.data.imgload_width;
-    var y = 0;
-    var x = 0;
+    var picHeight = this.data.picHeight;
+    var screenWidth = this.data.screenWidth;
+    var y = picHeight / 2 - 20;
+    var x = screenWidth - 60;
     var arr = [];
+    // var icon = (index + '').indexOf('.') == -1 ? true : false;
     var icon;
     if ((index + '').indexOf('.') == -1) {
       if (index == 0) {
@@ -243,7 +244,7 @@ Page({
     }
     arr.push(obj);
     var y1 = picHeight / 2 - 10;
-    var x1 = picWidth / 2;
+    var x1 = screenWidth / 2;
     var obj1 = {
       icon: icon,
       x: x1,
@@ -254,6 +255,7 @@ Page({
     this.setData({
       errorIconData: arr
     })
+    this.sendAnswer(data.detail)
   },
   /*子组件操作，回评本题*/
   backHandle(e) {
@@ -327,7 +329,6 @@ Page({
   },
   /*点击放大图片，（增大坐标）*/
   enlargeHandle(e) {
-    
     var oss_url = this.data.oss_url;
     var oss_arr = oss_url.split(',');
     for (let i = 0; i < oss_arr.length; i++) {
@@ -346,53 +347,18 @@ Page({
   imgload(e) {
     console.log('imgload', e)
     var screenWidth = this.data.screenWidth;
-
-    var vw = this.data.vw;
-    var vh = this.data.vh;
-
-    var img_vw,img_vh;
-
     var imgload_width = e.detail.width;
     var imgload_height = e.detail.height;
-
-    var common_width = vw * 0.95,
-      common_height = vh * 0.95,
-      scale_width = common_height / imgload_height * imgload_width,
-      scale_height = common_width / imgload_width * imgload_height;
-
-    if (imgload_width > imgload_height) {
-      img_vw = common_width;
-      img_vh = scale_height;
-      if (img_vh > vh) {
-        img_vh = common_height;
-        img_vw = scale_width;
-      }
-    } else {
-      img_vh = common_height;
-      img_vw = scale_width;
-      if (img_vw > vw) {
-        img_vw = scale_width;
-        img_vh = common_height;
-      }
+    if (imgload_width > screenWidth) {
+      imgload_width = screenWidth * 0.95;
     }
-
-    console.log(vw,vh,imgload_width,imgload_height,img_vw,img_vh)
-
-    var text_top = img_vh / 2;
-    var text_left = img_vw / 2;
-
-    default_text_top = text_top;
-    default_text_left = text_left
-
+    if (imgload_height > 360) {
+      imgload_height = 360
+    }
     this.setData({
-      imgload_width: img_vw,
-      imgload_height: img_vh,
-      t_top: text_top,
-      t_left: text_left
+      imgload_width: imgload_width,
+      imgload_height: imgload_height
     })
-
-    imgobj = e;
-    
   },
   prevImg: function () {
     console.log('上一题')
@@ -457,6 +423,12 @@ Page({
     var swiper = this.data.swiper;
     var current = swiper.current;
     var title = this.data.title;
+    // current++
+    // this.setData({
+    //   'swiper[current]':current,
+    //   'swiper[swiper_type]':true
+    // })
+    // return
     var answerData = this.data.answerData;
     var answer = this.data.answerArr;
     if (current < (swiper.imgUrls.length - 1)) {
@@ -512,8 +484,6 @@ Page({
         score_bar: false,
       })
 
-      console.log(title)
-
       if (title == '待批阅') {
         this.getCheched(swiper.imgUrls[current].examId, swiper.imgUrls[current].questionId);
       } else {
@@ -522,7 +492,7 @@ Page({
       return;
     }
 
-    var setTitle = title == '待批阅' ? title + (swiper.imgUrls.length - swiper.current) : title;
+    var setTitle = title == '待批阅' ? title + ":" + (swiper.imgUrls.length - swiper.current) : title
     wx.setNavigationBarTitle({
       title: setTitle
     })
@@ -548,7 +518,9 @@ Page({
         float_bar: false
       })
     } else if (type == 2) {
-      if (testType == 1) {return}
+      if (testType == 1) {
+        return
+      }
       this.setData({
         yes: true,
         close: false,
@@ -560,7 +532,9 @@ Page({
         float_type: 1
       })
     } else if (type == 3) {
-      if (testType == 1) {return}
+      if (testType == 1) {
+        return
+      }
       this.setData({
         line: false,
         yes: true,
@@ -568,9 +542,7 @@ Page({
         text: true,
         textEnd: false,
         float_bar: true,
-        float_type: 2,
-        t_top: default_text_top,
-        t_left: default_text_left
+        float_type: 2
       })
     } else if (type == 4) {
       this.setData({
@@ -635,7 +607,6 @@ Page({
   keydown: function (e) {
     console.log("打分")
     clearInterval(timers1);
-    console.log(this.data.current)
     // var index = e.currentTarget.dataset['index'];
     var index = this.data.item_current;
     var corecurrent = this.data.coreCurrent;
@@ -655,11 +626,12 @@ Page({
       })
     } else { //记录点击进来的分数，目前是第几个小题
       answer[corecurrent].value = index;
-      var actionWidth = this.data.imgload_width;
-      var actionHeight = this.data.imgload_height;
-      var y = actionHeight / 2 - 20;
-      var x = actionWidth - 60;
+      var picHeight = this.data.picHeight;
+      var screenWidth = this.data.screenWidth;
+      var y = picHeight / 2 - 20;
+      var x = screenWidth - 60;
       var arr = [];
+      // var icon = (index+'').indexOf('.')==-1 ? true : false;
       var icon;
       if ((index + '').indexOf('.') == -1) {
         if (index == 0) {
@@ -672,13 +644,13 @@ Page({
       }
       var obj = {
         icon: icon,
-        x: 0,
+        x: x,
         score: index == 0 ? 0 : '+ ' + index,
-        y: 0
+        y: y
       }
       arr.push(obj);
-      var y1 = actionHeight / 2 - 10;
-      var x1 = actionWidth / 2 - 30;
+      var y1 = picHeight / 2 - 10;
+      var x1 = screenWidth / 2;
       var obj1 = {
         icon: icon,
         x: x1,
@@ -734,12 +706,11 @@ Page({
     // clearTimeout(timer);
     // }, 100)//外层定时器是为了点击结束后键盘点击效果的延迟
   },
-   keyups(event) {   //键盘点击事件
+  keyups(event) {
     console.log(event)
     touchStartTime = new Date().getTime();
     var index = event.currentTarget.dataset['index'];
     var i = index == "···" ? 15 : index;
-    
     this.setData({
       current: i,
       item_current: index
@@ -777,14 +748,12 @@ Page({
   inputValue(e) { //输入完成触发
     console.log(e.detail)
     var input = this.data.textData;
-    console.log(this.data.t_left,this.data.t_top)
     var obj = {
       x: this.data.t_left,
       y: this.data.t_top,
       value: e.detail.value
     }
     input.push(obj);
-    textArrays.push(obj);//将输入完成之后的文字 坐标存入数组中
     this.setData({
       textData: input,
       text: true,
@@ -797,43 +766,46 @@ Page({
     return false;
   },
   EventMove(e) { //触摸移动事件
-
-    var _data = this.data;
-    
-    if (_data.line) {
+    // console.log(e)
+    // if(e.touches.length==1){//单指
+    //   this.setData({
+    //     flag_slide:true
+    //   })
+    // }
+    // if(e.touches.length>=2 && this.data.line && this.data.text){
+    //   console.log('双指缩放');
+    //   let touch = this.data.touch
+    //   let xMove = e.touches[1].clientX - e.touches[0].clientX;
+    //   let yMove = e.touches[1].clientY - e.touches[0].clientY;
+    //   let distance = Math.sqrt(xMove * xMove + yMove * yMove);
+    //   let distanceDiff = distance - touch.distance;
+    //   let newScale = touch.scale + 0.005 * distanceDiff;
+    //   if(newScale >= 2) {
+    //     newScale = 2
+    //   }
+    //   if(newScale <= 1) {
+    //     newScale = 1
+    //   }
+    //   this.setData({
+    //     'touch.scale': newScale,
+    //     flag_slide:false
+    //   })
+    // }
+    if (this.data.line) {
       return
     }
-
     var move_x = e.touches[0].clientX;
     var move_y = e.touches[0].clientY;
-
-    var boxTop = _data.boxTop,
-      vw = _data.vw,
-      vh = _data.vh,
-      imgload_width = _data.imgload_width,
-      imgload_height = _data.imgload_height,
-      screenWidth = _data.screenWidth,
-      screenHeight = _data.screenHeight;
-
-    if(screenWidth > screenHeight){
-      var y_empty = vh * 0.05 / 2;
-      var y = move_y - boxTop - y_empty;
-      var x = move_x - ((vw - imgload_width) / 2);
-    }else{
-      var x_empty = vw * 0.05 / 2;
-      var y = move_y - boxTop - ((vh - imgload_height) / 2);
-      var x = move_x - x_empty;
+    var top = this.data.picTop;
+    var height = this.data.picHeight;
+    var move_start = this.data.move_start_x;
+    var y = move_y - top;
+    if (y < height) { //不能超出元素的高度
+      this.setData({
+        t_top: y - 12,
+        t_left: move_x - move_start
+      })
     }
-
-    if(x < x_empty){
-      x = x_empty;
-    }
-
-    this.setData({
-      t_top: y,
-      t_left: x
-    })
-
   },
   // 手指触摸事件
   EventHandleStart: function (e) {
@@ -863,56 +835,61 @@ Page({
   },
   //手指触摸结束时的事件
   EventHandle: function (e) {
-    var _data = this.data;
+    // console.log(e)
     end_x = e.changedTouches[0].clientX; // 手指结束触摸时的x轴 x轴--->相对于画布左边的距离
     end_y = e.changedTouches[0].clientY; // 手指结束触摸时的y轴 y轴--->相对于画布顶部的距离
-    if (_data.clear && _data.close && _data.line && _data.text) {
+    if (this.data.clear && this.data.close && this.data.line && this.data.text) {
       if (end_x > strat_x) { //向左滑动，显示上一题
+        // if(this.data.tabType ==1 || this.data.testType ==1){
         console.log('右滑')
-        this.prevImg();
+        this.prevImg()
+        // }
       } else if (end_x < strat_x) {
+        // if(this.data.tabType ==1 || this.data.testType ==1){
         console.log('左滑')
-        this.nextImg();
+        // var swiper = this.data.swiper;
+        // if(swiper.current == 0){
+        //   console.log('这是第一张')
+        //   return
+        // }
+        this.nextImg()
+        // }
       }
       return
     }
-    
-    if (!_data.close) {
+    if (!this.data.close) {
       var diff_x = end_x - strat_x,
         diff_y = end_y - strat_y;
       //返回角度,不是弧度
       var deg = 360 * Math.atan(diff_y / diff_x) / (2 * Math.PI);
       var width = Math.pow((diff_x * diff_x + diff_y * diff_y), 0.5);
-
-      var vh = _data.vh,
-        vw = _data.vw,
-        boxTop = _data.boxTop,
-        screenHeight = _data.screenHeight,
-        screenWidth = _data.screenWidth,
-        picHeight = _data.imgload_height,
-        picWidth = _data.imgload_width;
-
-      var top = strat_y - boxTop - ((vh - picHeight) / 2),left;
-      if(screenWidth > screenHeight){
-        left = strat_x - (vw - picWidth) / 2;
-      }else{
-        left = strat_x;
-      }
-
+      // var query = wx.createSelectorQuery()
+      // query.select('.pic').boundingClientRect()
+      // query.exec((res) => {
+      // console.log('res',res)
+      // var y = res[0].top;
+      // var h = res[0].height;
+      var y = this.data.picTop;
+      var h = this.data.picHeight;
+      // var left = res[0].left;
+      var left = 0;
       var arr = this.data.canvasData;
-      
+      if (this.data.transverse) { //横屏计算x轴
+        strat_x = strat_x - left;
+      }
+      var result_y = strat_y - y;
       var obj = {
-        left,
-        top,
+        left: strat_x,
+        top: result_y,
         width: width,
         deg: deg
       }
       arr.push(obj);
-      lineArrays.push(obj);//将所有线条数据存入 数组中
 
       this.setData({
         canvasData: arr
       })
+      // })
     }
   },
   countKeycode(type) {
@@ -956,10 +933,32 @@ Page({
       }
 
     }
+    // wx.setNavigationBarTitle({
+    //   title:'待批阅'
+    // })
+    wx.getSystemInfo({
+      success: (res) => {
+        this.setData({
+          screenWidth: res.screenWidth
+        })
+      }
+    })
+
   },
   onReady() {
     // 页面加载完成
-    this.getVh();
+    /*进入页面时获取pic 元素的宽高，存下来备用*/
+    var query = wx.createSelectorQuery()
+    query.select('.pic').boundingClientRect()
+    query.exec((res) => {
+      console.log(res)
+      if (res[0]) {
+        this.setData({
+          picTop: res[0].top,
+          picHeight: res[0].height
+        })
+      }
+    })
   },
   onShow: function () {
     console.log('页面显示')
@@ -1036,20 +1035,42 @@ Page({
     for (let i = 0; i < arr.length; i++) {
       var arr1 = arr[i].split('$');
 
+
+
       if (arr1[0] == 'right') {
         var obj = {};
-        obj.icon = true;
         obj.x = arr1[1] * 1;
         obj.y = arr1[2] * 1;
         obj.score = arr1[3];
+        var icon;
+        if ((obj.score + '').indexOf('.') == -1) {
+          if (obj.score == 0) {
+            icon = 1; //没有小数点，但是0分
+          } else {
+            icon = 2; //没有小数点，也不是0分
+          }
+        } else {
+          icon = 3; //有小数点 半对
+        }
+        obj.icon = icon;
         errorData.push(obj);
       }
       if (arr1[0] == 'error') {
         var obj1 = {};
-        obj1.icon = false;
         obj1.x = arr1[1] * 1;
         obj1.y = arr1[2] * 1;
         obj1.score = arr1[3];
+        var icon1;
+        if ((obj1.score + '').indexOf('.') == -1) {
+          if (obj1.score == 0) {
+            icon1 = 1; //没有小数点，但是0分
+          } else {
+            icon1 = 2; //没有小数点，也不是0分
+          }
+        } else {
+          icon1 = 3; //有小数点 半对
+        }
+        obj1.icon = icon1;
         errorData.push(obj1);
       }
       if (arr1[0] == 'line') {
@@ -1129,6 +1150,10 @@ Page({
     }).then(res => {
       if (res.code == 10000) {
         if (!res.data) {
+          // wx.showToast({
+          //   content:'没有更多试卷了',
+          //   duration:2000
+          // })
           var swiper = this.data.swiper;
           this.setData({
             no_papar: false,
@@ -1136,11 +1161,11 @@ Page({
           })
           return
         }
-        var type = res.data.type;
+        var type = 2;
         if (res.data.type == 1 || res.data.type == 2) {
           type = 1
         } else if (res.data.type == 10) {
-          type = 2 //多选题
+          type = 2
         } else if (res.data.type == 3) {
           type = 3
         } else if (res.data.type == 4) {
@@ -1149,11 +1174,21 @@ Page({
         var swiper = this.data.swiper;
         var picdata = res.data.TopicData;
         var oss_url = '';
+        // for(let i =0;i<picdata.length;i++){
+        //   picdata[i].answerPostion = picdata[i].answerPostion?JSON.parse(picdata[i].answerPostion):[];
+        //   if (picdata[i].answerPostion.length>0){
+        //     var pic_url = picdata[i].answerPostion[0].url ;
+        //     picdata[i].answerPostion[0].url = pic_url.substring(0,pic_url.indexOf('?'));
+        //     oss_url = pic_url.substring(pic_url.indexOf('?')+1);
+        //   }
+        //   picdata[i].studentNamePic = picdata[i].studentNamePic?JSON.parse(picdata[i].studentNamePic):[];
+        // }
         for (let j = 0; j < picdata.length; j++) {
           picdata[j].answerPostion = picdata[j].answerPostion ? JSON.parse(picdata[j].answerPostion) : [];
 
           if (picdata[j].answerPostion.length > 0) {
             var pic_url = picdata[j].answerPostion[0].url;
+            // console.log('??', picdata[j].answerPostion)
             try {
               picdata[j].answerPostion[0].url = pic_url.substring(0, pic_url.indexOf('?') != -1 ? pic_url.indexOf('?') : 9999);
             } catch (err) {
@@ -1173,8 +1208,6 @@ Page({
         var len = picdata.length;
         swiper.allScore = res.data.score;
         swiper.answer = res.data.questionPic ? JSON.parse(res.data.questionPic) : [];
-        var current_speed = res.data.check;
-        var all_speed = res.data.markAll;
         swiper.standard = res.data.answer; //参考答案
         var answerArr = [];
         answerArr.push({
@@ -1193,8 +1226,7 @@ Page({
           testType: type,
           coreCurrent: 0,
           answerArr: answerArr,
-          current_speed: current_speed,
-          all_speed: all_speed
+          no_papar: true
         })
       } else if (res.code == 10029) {
         wx.setNavigationBarTitle({
@@ -1231,7 +1263,6 @@ Page({
     data.answerPostion = JSON.stringify(data.answerPostion);
     data.symbolMark = this.optionCon();
     data.studentNamePic = JSON.stringify(data.studentNamePic);
-    var current_speed = this.data.current_speed;
     if (!data.scoreStatus) { //回评卷不加
       data.scoreStatus = true;
     }
@@ -1269,6 +1300,7 @@ Page({
       examId: examId,
       questionId: questionId
     }).then((res) => {
+      console.log(res)
       this.mainHandle(res, 1);
     })
   },
@@ -1284,12 +1316,11 @@ Page({
       var swiper = this.data.swiper;
       var picdata;
       var type = this.data.testType;
-      swiper.current = 0;
       if (flag == 1) {
         if (res.data.type == 1 || res.data.type == 2) {
           type = 1
         } else if (res.data.type == 10) {
-          type = 2 //多选题
+          type = 2
         } else if (res.data.type == 3) {
           type = 3
         } else if (res.data.type == 4) {
@@ -1298,26 +1329,9 @@ Page({
         picdata = res.data.TopicData;
         /*从最后一个开始*/
         // swiper.current = res.data.TopicData.length-1;
-        
         swiper.allScore = res.data.score;
         swiper.answer = res.data.questionPic ? JSON.parse(res.data.questionPic) : [];
         swiper.standard = res.data.answer; //参考答案
-        swiper.chooseCode = [{
-          'title': '漏选三项',
-          'num': 0
-        },
-        {
-          'title': '漏选二项',
-          'num': 2
-        },
-        {
-          'title': '漏选一项',
-          'num': 4
-        },
-        {
-          'title': '',
-          'num': 6
-        }];
         var answerArr = [];
         answerArr.push({
           value: '',
@@ -1331,6 +1345,7 @@ Page({
       } else { //------------------------
         picdata = res.data;
       }
+      swiper.current = 0;
       var oss_url = "";
       for (let j = 0; j < picdata.length; j++) {
         picdata[j].answerPostion = picdata[j].answerPostion ? JSON.parse(picdata[j].answerPostion) : [];
@@ -1341,10 +1356,6 @@ Page({
             picdata[j].answerPostion[0].url = pic_url.substring(0, pic_url.indexOf('?') != -1 ? pic_url.indexOf('?') : 9999);
           } catch (err) {
             picdata[j].answerPostion = JSON.parse(picdata[j].answerPostion)
-            if(typeof(picdata[j].answerPostion) == "string"){
-              picdata[j].answerPostion = JSON.parse(picdata[j].answerPostion)
-            }
-            console.log(picdata[j].answerPostion)
             pic_url = picdata[j].answerPostion[0].url;
             picdata[j].answerPostion[0].url = pic_url.substring(0, pic_url.indexOf('?') != -1 ? pic_url.indexOf('?') : 9999);
           }
@@ -1381,16 +1392,16 @@ Page({
         title: '回评卷'
       })
       this.setData({
+        title: '回评卷',
         oss_url: oss_url,
         swiper: swiper,
-        testType: type?type:this.data.testType,
+        testType: type,
         coreCurrent: 0,
         answerData: answerDatas,
         no_papar: true
       })
-      console.log(swiper.current,swiper.imgUrls)
-      this.getPaperInfo(swiper.imgUrls[swiper.current].symbolMark);//初始化页面线条等
-      this.getScore(swiper.imgUrls[swiper.current].score);//初始化页面分值
+      this.getPaperInfo(swiper.imgUrls[swiper.current].symbolMark);
+      this.getScore(swiper.imgUrls[swiper.current].score);
     } else if (res.code == 10029) {
       var title = this.data.title;
       wx.setNavigationBarTitle({
@@ -1443,110 +1454,5 @@ Page({
     this.setData({ //把答案分数，划线 文字等装进数组
       answerData: answerDatas
     })
-  },
-  //setPropAction
-  setPropAction(e){
-    var flag = e.currentTarget.dataset.flag;
-    flag = flag > 0;
-    this.setData({
-      set_flag: flag
-    })
-  },
-  //获取各块宽高
-  getVh(){
-    return new Promise((response, reject) => {
-      wx.getSystemInfo({
-        success: (res) => {
-          this.setData({
-            screenWidth: res.screenWidth,
-            screenHeight: res.screenHeight,
-            barHeight: res.statusBarHeight,
-            
-            transverse: res.screenWidth > res.screenHeight
-          })
-        }
-      })
-      /*进入页面时获取pic 元素的宽高，存下来备用*/
-      var query = wx.createSelectorQuery();
-      var container = '.contain';
-      query.select('.contain').boundingClientRect().exec((res) => {
-        console.log(res)
-        if (res[0]) {
-          this.setData({
-            vw: res[0].width,
-            vh: res[0].height,
-            boxTop: res[0].top
-          })
-          response();
-        }
-      })
-      
-      // query.select('.keybar').boundingClientRect().exec((res) => {
-      //   console.log(res)
-      //   this.setData({
-      //     boxBot: res[0].height
-      //   })
-      // })
-    })
-  },
-  //修改打分规则
-  resetRules(e){
-    var rule1 = e.detail.value.rule1;
-    var rule2 = e.detail.value.rule2;
-    var rule3 = e.detail.value.rule3;
-    var rules = this.data.swiper.chooseCode;
-    if(rule1 == ''||rule2 == ''||rule3 == ''){
-      wx.showToast({
-        title: '请填完所有规则',
-        icon: "none",
-        duration: 1000
-      });
-      return false;
-    }
-    rules[0].num = rule1;
-    rules[1].num = rule2;
-    rules[2].num = rule3;
-    console.log(rules)
-    this.setData({
-      'swiper.chooseCode': rules,
-      set_flag: false
-    })
-  },
-  //tabbar 操作的前进或撤销
-  forwardHandle(e){
-    var forward = e.currentTarget.dataset.forward;
-    var textData = this.data.textData;
-    var canvasData = this.data.canvasData;
-    var close = this.data.close;//是否划线
-    var line = this.data.line;//是否备注
-    if(!close){
-      if(forward == 1){//前进
-        if(canvasData.length == lineArrays.length) return;
-        var cur = (lineArrays.slice(canvasData.length,canvasData.length+1))[0];
-        canvasData.push(cur)
-      }else{//后退
-        if(canvasData.length == 0) return;
-        canvasData.pop();
-      }
-    }
-    if(!line){
-      if(forward == 1){//前进
-        if(textData.length == textArrays.length) return;
-        var cur = (textArrays.slice(textData.length,textData.length+1))[0];
-        textData.push(cur)
-      }else{//后退
-        if(textData.length == 0) return;
-        textData.pop();
-      }
-    }
-    this.setData({
-      canvasData,
-      textData
-    })
-  },
-  onResize(e){
-    this.getVh().then(()=>{
-      this.imgload(imgobj);
-    });
   }
 });

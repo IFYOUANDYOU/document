@@ -1,0 +1,36 @@
+<view class="wrapper-son">
+  <view class="t_title" >正确答案：{{swiper.standard}}</view>
+  <view class="pics">
+    <!-- <image src="../../image/marking/1-2-1.png" mode="aspectFit" /> -->
+    <slot ></slot>
+  </view>
+  <view class='magnifier' catchtap='enlargeHandle'>
+    <image src='../../image/marking/enlarge.png'></image>
+  </view>
+  <view class="actions" wx:if="{{paparStatus}}">
+    <view class="btn" data-type="1" bind:touchstart="actions">
+      <view class="icon_1">
+        <image src="../../image/marking/error.png"  />
+      </view>
+    </view>
+    <view class="btn"  data-type="2" bind:touchstart="actions">
+      <view class="icon_2">
+        <image src="../../image/marking/right.png"  />
+      </view>
+    </view>
+  </view>
+  <view class="actions" wx:if="{{!paparStatus}}">
+    <view class="btn b_btn" data-type="1" bind:touchstart="endHandle">
+      <view class="icon_1">
+        <image src="../../image/marking/_left.png"  />
+      </view>
+      <view class='b-tit'>回评本题</view>
+    </view>
+    <view class="btn b_btn"  data-type="2" bind:touchstart="endHandle">
+      <view class='b-tit'>评阅下一题</view>
+      <view class="icon_2">
+        <image src="../../image/marking/_right.png"  />
+      </view>
+    </view>
+  </view>
+</view>
