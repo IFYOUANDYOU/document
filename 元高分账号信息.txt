@@ -1,0 +1,62 @@
+git clone --bare http://gitygf.yuangaofen.com:8081/ApplicationDev/wechatapp
+
+http://test3.yuangaofen.com/reportpdf/dist/index.html#/index?clazz=3&grade=小学2015级&school=成都市红牌楼小学&student_name=李享科&studetn_no=14e43a1ba59904192b7bf99c750021fc&year=2015
+
+学业人格报告
+'http://test3.yuangaofen.com/xlcp/report/dimensionReportForNotLogin?type=' + types + '&school='+school+'&student_no=' + student_no
+
+
+
+http://gitygf.yuangaofen.com:8081/ApplicationDev/wechatapp.git
+
+
+
+接口文档：
+https://teacher.yuangaofen.com/swagger-ui.html#!/scan-the-manager-controller/removeScanTheUsingPOST
+
+
+蓝湖
+https://lanhuapp.com/web/#/item/project/board?pid=544e3e90-336c-4456-abbe-19f437f67761
+
+仓库
+http://gitygf.yuangaofen.com:8081/ApplicationDev/wechatapp/tree/develop
+
+
+https://www.yuangaofen.com/manages/#/login
+后台管理
+账号：15123249239
+密码：123456
+
+
+学析优WiFi
+xuexiyou3  987654321a*
+xuexiyou5  a*987654321
+xuexiyou   987654321a*
+
+
+错题集
+http://47.107.40.191:3100/cuoti/index.html#/?guId=395ca2b2ed684bef973056f06a70f778&md5Code=9eeec9f5e6feac0782c0807eaed02953
+
+
+
+
+ 
+
+
+错题PDF、教师PC后台
+Vue.prototype.$baseUrl = 'http://47.107.40.191:8087/exercises',//测试服
+Vue.prototype.$baseUrl = 'http://topic.xuexiyou.cn/exercises',//正式服
+
+PDF正式环境地址：http://web.xuexiyou.cn/error/pc/index.html#/?guId=8c0dfdc691a34d20adab55938c5acd98
+
+
+
+
+
+元阅后台浏览地址：https://web.xuexiyou.cn/yy/index.html#/
+
+元阅  API接口地址：https://pc.yuangaofen.com.cn
+
+
+
+
