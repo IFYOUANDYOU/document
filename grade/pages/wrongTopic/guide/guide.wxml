@@ -1,0 +1,10 @@
+<view class="container">
+    <view class="title">即将按照您的要求为学生定制个性化错题集</view>
+    <view class="guide">
+        <image src='/image/wrongs/cover-icon.png' mode='widthFix'></image>
+    </view>
+    <view class="actions">
+        <view class="btn begin">立即开始</view>
+        <view class="btn skip">跳过（使用默认模板）</view>
+    </view>
+</view>

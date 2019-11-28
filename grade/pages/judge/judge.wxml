@@ -1,0 +1,34 @@
+<view class="wrapper-son" data-show="{{answerStatus}}">
+  <view wx:if="{{answerStatus && swiper.standard}}" class="t_title" >正确答案：{{swiper.standard}}</view>
+  <view class="pics">
+    <slot></slot>
+  </view>
+  <!--对错按钮-->
+  <view class="actions judgeBtn" wx:if="{{paparStatus && imgcomplete}}">
+    <view class="btn" data-type="1" bind:touchstart="actions">
+      <view class="icon_1">
+        <image src="../../image/marking/error.png"  />
+      </view>
+    </view>
+    <view class="btn"  data-type="2" bind:touchstart="actions">
+      <view class="icon_2">
+        <image src="../../image/marking/right.png"  />
+      </view>
+    </view>
+  </view>
+  <!--阅卷完成按钮-->
+  <view class="actions completeBtn" wx:if="{{!paparStatus}}">
+    <view class="btn b_btn" data-type="1" bind:touchstart="endHandle">
+      <view class="icon_1">
+        <image src="../../image/marking/_left.png"  />
+      </view>
+      <view class='b-tit'>回评本题</view>
+    </view>
+    <view class="btn b_btn"  data-type="2" bind:touchstart="endHandle">
+      <view class='b-tit' data-back="{{backStatus}}">{{backStatus?'返回列表':'评阅下一题'}}</view>
+      <view class="icon_2">
+        <image src="../../image/marking/_right.png"  />
+      </view>
+    </view>
+  </view>
+</view>

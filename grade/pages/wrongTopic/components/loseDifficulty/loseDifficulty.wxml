@@ -1,0 +1,23 @@
+<!--pages/wrongTopic/components/loseDifficulty/loseDifficulty.wxml-->
+<view class='overview'>
+  <view class='title'>
+    <view><image mode="scaleToFill"  src="/image/cuotiji/dftnd.png"></image>丢分题难度</view>
+  </view>
+</view>
+<view class='container'>
+  <view class='item'>
+    <circle type="{{1}}" content="{{contentArr[0]}}"/>
+    <view class='lose-info'>丢{{contentArr[0].lostScore}}分</view>
+    <view class='total-score'>共{{contentArr[0].allScore}}分</view>
+  </view>
+  <view class='item'>
+    <circle type="{{2}}" content="{{contentArr[1]}}"/>
+    <view class='lose-info'>丢{{contentArr[1].lostScore}}分</view>
+    <view class='total-score'>共{{contentArr[1].allScore}}分</view>
+  </view>
+  <view class='item'>
+    <circle type="{{3}}" content="{{contentArr[2]}}"/>
+    <view class='lose-info'>丢{{contentArr[2].lostScore}}分</view>
+    <view class='total-score'>共{{contentArr[2].allScore}}分</view>
+  </view>
+</view>

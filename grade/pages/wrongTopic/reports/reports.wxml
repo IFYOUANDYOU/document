@@ -1,0 +1,22 @@
+<view class="container">
+    <!-- 班级学生 报告列表 -->
+    <scroll-view class="scroll-reports" enable-back-to-top scroll-into-view="{{toView}}" scroll-y="true" scroll-with-animation="true" bindscroll="onPageScroll">
+        <view wx:for="{{reportList}}" wx:for-item="group" wx:key="{{group.id}}" class="group-item" id="{{ 'inToView'+group.id}}" data-id='{{group.id}}'>
+            <view class='group_title'>{{group.region}}</view>
+            <view class='name_wrapper' data-list="{{item.hasList}}" data-info="{{item}}" wx:for="{{group.brands}}" wx:for-item="item" wx:key="{{index}}" bindtap='showReport'>
+                <view class="student_name {{index==0?'':'index-margin'}} {{item.hasList ? 'has-list' : 'no'}}" data-id='{{item.student_id}}'>
+                    {{item.student_name}}
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <!-- 右侧字母导航 -->
+    <view class="orientation_region">
+        <view class="orientation">#</view>
+        <block wx:for="{{reportList}}" wx:key="{{item.id}}">
+            <view class="orientation_mark {{isActive==item.id ? 'active':'' }}" bindtap="scrollToViewFn" data-id="{{item.id}}">
+                {{item.region}}
+            </view>
+        </block>
+    </view>
+</view>

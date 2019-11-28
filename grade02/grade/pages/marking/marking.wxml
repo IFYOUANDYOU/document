@@ -1,0 +1,260 @@
+<view class="wrapper">
+  <!--竖屏 并且全屏的时候显示顶部返回按钮-->
+    <view class="topActions" style="padding-top: {{barHeight}}px">
+    <navigator class="back" hover-class="navigator-hover" open-type="navigateBack">
+      <image src='../../image/marking/down.png'></image>
+    </navigator>
+    <view class="title">{{page_title}}</view>
+  </view>
+  <!--横屏时显示返回按钮-->
+  <navigator class="backbtn" hover-class="navigator-hover" open-type="navigateBack" style="top: {{barHeight}}px;">
+      <image src='../../image/marking/_left.png'></image>
+  </navigator>
+  <!--tabbar-->
+  <view class="topbar" style="top: {{transverse?barHeight:'0'}}px;">
+    <view class='item'>
+      <image src='../../image/marking/move.png' wx:if="{{yes}}"></image>
+      <image src='../../image/marking/move-active.png' wx:else></image>
+      <view class='handle' bind:touchstart="yesup" bind:touchend="yesdown" data-type="1"></view>
+    </view>
+    <view class='item'>
+      <image src='../../image/marking/write.png' wx:if="{{close}}"></image>
+      <image src='../../image/marking/write-active.png' wx:else></image>
+      <view class='handle' bind:touchstart="yesup" bind:touchend="yesdown" data-type="2"></view>
+    </view>
+    <view class='item'>
+      <image src='../../image/marking/text.png' wx:if="{{line}}"></image>
+      <image src='../../image/marking/text-active.png' wx:else></image>
+      <view class='handle' bind:touchstart="yesup" bind:touchend="yesdown" data-type="3"></view>
+    </view>
+    <view class='item'>
+      <image src='../../image/marking/collect.png' wx:if="{{text}}"></image>
+      <image src='../../image/marking/collect-active.png' wx:else></image>
+      <view class='handle' bind:touchstart="yesup" bind:touchend="yesdown" data-type="4"></view>
+    </view>
+    <view class='item'>
+      <image src='../../image/marking/papar.png' wx:if="{{clear}}"></image>
+      <image src='../../image/marking/papar-active.png' wx:else></image>
+      <view class='handle' bind:touchstart="yesup" bind:touchend="yesdown" data-type="5"></view>
+    </view>
+    <!--tabbar 学生选择-->
+    <view class='select' catchtap='openStudent'>
+      <view class='student_name'>
+        <image src='{{swiper.imgUrls[swiper.current].studentNamePic[0].url}}' wx:if="{{swiper.imgUrls[swiper.current].studentNamePic.length>0}}"></image>
+      </view>
+      <view class='select_icon'>
+        <image src='../../image/marking/down.png' style="width:25rpx;height:12rpx;transform:rotate({{show_student_list?180:0}}deg)"></image>
+      </view>
+      <view class='student_list' wx:if="{{show_student_list}}">
+        <view class='list_img' wx:for="{{swiper.imgUrls}}" wx:key="{{index}}" catchtap='selectStudentId' data-qid="{{item.questionId}}" data-uid="{{item.studentId}}" data-eid="{{item.examId}}" data-index="{{index}}">
+          <image src='{{item.studentNamePic[0].url}}' wx:if="{{item.studentNamePic.length>0 || item.studentNamePic[0].url}}"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!--tabbar点击之后的弹出层-->
+  <view class="float_bar {{float_type==2?'float_bar_text':''}}" wx:if="{{float_bar}}">
+    <view class='f_bar' bindtap='clearArrData'>
+      <image src='../../image/marking/rubber-active.png'></image>
+    </view>
+    <view class='f_bar' catchtap='forwardHandle' data-forward="-1">
+      <image src='../../image/marking/forward.png'></image>
+    </view>
+    <view class='f_bar' catchtap='forwardHandle' data-forward="1">
+      <image src='../../image/marking/back.png'></image>
+    </view>
+  </view>
+  <!--答卷显示主要内容-->
+  <view class='_box' wx:if="{{testType!=1 && no_papar}}">
+    <!-- <view class="cebox">
+      <image class="ceimg" mode="aspectFit" src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559647214414&di=4850cd13e1e493d8f283530b73717de7&imgtype=0&src=http%3A%2F%2Fs1.51cto.com%2Fimages%2F20190508%2F1557309068980418.jpg%3Fx-oss-process%3Dimage%2Fwatermark%2Csize_16%2Ctext_QDUxQ1RP5Y2a5a6i%2Ccolor_FFFFFF%2Ct_100%2Cg_se%2Cx_10%2Cy_10%2Cshadow_90%2Ctype_ZmFuZ3poZW5naGVpdGk%3D'></image>
+    </view> -->
+    <view class="contain">
+      <view class='pic' bindtouchstart='EventHandleStart' bindtouchmove="EventMove" bindtouchend='EventHandle'>
+        <block hidden="{{!imgcomplete}}">
+          <view class="swiper-item {{index==swiper.current && swiper.swiper_type?'swiper-active':'swiper-actived'}}" wx:for="{{swiper.imgUrls}}" wx:key="{{index}}" wx:if="{{swiper.current==index}}">
+            <block wx:if="{{item.answerPostion[0].url}}">
+              <view class="item" wx:if="{{item.answerPostion.length>1}}">
+                <block hidden="{{!imgcomplete}}" wx:for="{{item.answerPostion}}" wx:key="{{index}}" wx:for-item="answer">
+                    <image src="{{answer.url +'?'+ answer.oss_url || ''}}" bindload="imgload" binderror="imageOnLoadError" class="slide-image" style="width:{{answer.imgload_vw}}px;height:{{answer.imgload_vh}}px;display:{{imgcomplete ? '' : 'none !important'}}" mode="aspectFit" />
+                </block>
+              </view>
+              <view class="item" wx:else>
+                 <!-- <image wx:if="{{!answer.isRead}}" src="{{item.answerPostion[0].url +'?'+ item.answerPostion[0].oss_url || ''}}" mode="aspectFit" bindload="imgload" binderror="imageOnLoadError" class="slide-image" style="width:{{imgload_width}}px;height:{{imgload_height}}px;display:{{imgcomplete ? '' : 'none !important'}}" /> -->
+                 <image src="{{item.answerPostion[0].url +'?'+ item.answerPostion[0].oss_url || ''}}" mode="aspectFit" bindload="imgload" binderror="imageOnLoadError" class="slide-image" style="width:{{imgload_width}}px;height:{{imgload_height}}px;display:{{imgcomplete ? '' : 'none !important'}}" />
+              </view>
+            </block>
+          </view>
+        </block>
+        <block wx:if="{{!imgcomplete}}">
+          <view class="loadtext" style='display:flex;justify-content:center;'>
+            <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
+          </view>
+        </block>
+        <view class="showcanvasimg" wx:if="{{canvasImg}}"><image src="{{canvasImg}}" mode="aspectFit" /></view>
+        <!-- 输入完成后显示文字部分 -->
+        <view class='_textara' style='top:{{item.y}}px;left:{{item.x}}px' wx:if="{{textMark.length>0 && imgcomplete}}" wx:for="{{textMark}}" wx:key="{{index}}">
+          <text>{{item.value}}</text>
+        </view>
+        <!-- 选择勾选图标，勾选完成后显示图标 -->
+        <view class='error j-error' wx:if="{{scoreMark && imgcomplete}}">
+          <image class="wrong icon" src='../../image/marking/wrong.png' wx:if="{{scoreMark.icon == 1}}"></image>
+            <image class="w_right icon" src='../../image/marking/w_right.png' wx:if="{{scoreMark.icon == 3}}"></image>
+            <image class="alright icon" src='../../image/marking/alright.png' wx:if="{{scoreMark.icon == 2}}"></image>
+            <view class='icon_num' wx:if="{{scoreMark.score || scoreMark.score == 0}}">{{scoreMark.score}}</view>
+        </view>
+        <!-- 线条集合 -->
+        <view class='canvasd' wx:if="{{lineMark.length>0 }}">
+          <view class='can_line' wx:for="{{lineMark}}" wx:key="{{index}}" style='width:{{item.width}}px;top:{{item.top}}px;left:{{item.left}}px;transform:rotate({{item.deg}}deg)'></view>
+        </view>
+        <!-- line标记 -->
+        <canvas data-line="{{close}}" canvas-id="lineCanvas" class="lineCanvas" style="width:{{imgload_width}}px;height:{{imgload_height}}px;" disable-scroll="false" bindtouchstart="canvasTouchStart" bindtouchmove="canvasTouchMove" bindtouchend="canvasTouchEnd">
+        </canvas>
+        <!--cover-view 克制canvas-->
+        <cover-view wx:if="{{!textEnd && !line}}" class="coverBox" bindtap="textFocusTap">
+        </cover-view>
+        <!--备注文字输入-->
+        <view class='textaras' wx:if="{{!textEnd && !line}}" style="top:{{t_top}}px;left:{{t_left}}px">
+          <textarea auto-height maxlength="50" class='_input' data-focus="{{textFocusStatus}}" adjust-position="false" bindconfirm="inputValue" focus="{{textFocusStatus}}" />
+        </view>
+        
+      </view>
+    </view>
+  </view>
+
+  <!--弹出键盘-->
+  <view class='keybar {{moreKeyCode?"moreCode":""}}' wx:if="{{testType!=1 && no_papar  && imgcomplete}}">
+    <!--多选题 底部分值-->
+    <view  wx:if="{{keyCode.length}}" class="keycode {{keyrows>=2?'row2':''}} {{moreKeyCode?'row3':''}}">
+      <block wx:if="{{testType == 2}}">
+        <view class="setting code" bindtouchstart='setPropAction' data-flag='1'>
+          <image src='../../image/marking/setting.png'></image>
+        </view>
+        <view class='code {{testType == 2?"setcode":""}}' wx:for="{{swiper.rule}}" wx:key="{{index}}">
+          <view class='code-text {{current == item?"text_active":""}}' bindtouchstart="keyups" bindtouchend="keydown" data-index="{{item}}" wx:if="{{index != 61 && index != 62}}">
+            {{item}}
+          </view>
+          <!-- 键盘气泡 -->
+          <view class='bubble' wx:if="{{current == item && item != '···' && item_current != ''}}">
+            <text>{{longTap?item+0.5:item}}</text>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class='code {{testType == 2?"setcode":""}}' wx:for="{{keyCode}}" wx:key="{{index}}">
+          <view class='code-text {{current == index?"text_active":""}}' bindtouchstart="keyups" bindtouchend="keydown" hover-class='keycode_active' data-index="{{item}}" wx:if="{{index != 61 && index != 62}}">
+            {{item}}
+          </view>
+          <!-- 键盘气泡 -->
+          <view class='bubble' wx:if="{{current == index && item != '···' && item_current != ''}}">
+            <text>{{item_current}}</text>
+          </view>
+        </view>
+        <view class='empty' wx:for="{{keyCodeNum-keyCode.length}}" wx:key="{{item}}"></view>
+      </block>
+    </view>
+  </view>
+  <!--阅卷完成 icon提示-->
+  <view wx:if="{{!no_papar}}" class="nopic_view">
+    <view class='no_pic'>
+      <image src='../../image/marking/no_answer.png' mode="aspectFit"></image>
+    </view>
+    <view class='no_text'>阅完啦！</view>
+  </view>
+  <!--阅卷完成 按钮-->
+  <view class="actions" wx:if="{{!no_papar && testType != 1}}">
+    <view class="btn b_btn" data-type="1" bind:touchstart="endHandle">
+      <view class="icon_1">
+        <image src="../../image/marking/_left.png"  />
+      </view>
+      <view class='b-tit'>回评本题</view>
+    </view>
+    <view class="btn b_btn"  data-type="2" bind:touchstart="endHandle">
+      <view class='b-tit' data-back="{{back}}">{{back?'返回列表':'评阅下一题'}}</view>
+      <view class="icon_2">
+        <image src="../../image/marking/_right.png"  />
+      </view>
+    </view>
+  </view>
+  <!--选择题 时候出现-->
+  <judge-comment extra="{{swiper}}" currentIndex="{{swiper.current}}" imgcomplete="{{imgcomplete}}" backStatus="{{back}}" paparStatus="{{no_papar}}" answerStatus="{{judgeAnswer}}" wx:if="{{testType==1}}" bindonCounterPlusOne="onCounterPlusOne" bindbackHandle="backHandle" bindenlarge="enlargeHandle">
+    <view class="contain" wx:if="{{no_papar}}">
+      <view class='pic judgePic' bindtouchstart='EventHandleStart' bindtouchend='EventHandle'>
+        <block hidden="{{!imgcomplete}}">
+          <view class="swiper-item {{index==swiper.current && swiper.swiper_type?'swiper-active':'swiper-actived'}}" wx:for="{{swiper.imgUrls}}" wx:key="{{index}}" wx:if="{{swiper.current==index}}">
+            <block wx:if="{{item.answerPostion[0].url}}">
+              <view class="item" wx:if="{{item.answerPostion.length>1}}">
+                <block wx:for="{{item.answerPostion}}" wx:key="{{index}}" wx:for-item="answer">
+                  <image src="{{answer.url +'?'+ answer.oss_url || ''}}" bindload="imgload" binderror="imageOnLoadError" class="slide-image" style="width:{{answer.imgload_vw}}px;height:{{answer.imgload_vh}}px;display:{{imgcomplete ? '' : 'none !important'}}" mode="aspectFit" />
+                </block>
+              </view>
+              <view class="item" wx:else>
+                <image src="{{item.answerPostion[0].url +'?'+ item.answerPostion[0].oss_url || ''}}" mode="aspectFit" bindload="imgload" binderror="imageOnLoadError" class="slide-image" style="width:{{imgload_width}}px;height:{{imgload_height}}px;display:{{imgcomplete ? '' : 'none !important'}}" />
+              </view>
+            </block>
+          </view>
+        </block>
+        <block wx:if="{{!imgcomplete}}">
+          <view class="loadtext" style='display:flex;justify-content:center;'>
+            <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
+          </view>
+        </block>
+        <!-- 选择勾选图标，勾选完成后显示图标 -->
+        <view class='error j-error' wx:if="{{scoreMark && imgcomplete}}">
+          <image class="wrong icon" src='../../image/marking/wrong.png' wx:if="{{scoreMark.icon == 1}}"></image>
+            <image class="w_right icon" src='../../image/marking/w_right.png' wx:if="{{scoreMark.icon == 3}}"></image>
+            <image class="alright icon" src='../../image/marking/alright.png' wx:if="{{scoreMark.icon == 2}}"></image>
+            <view class='icon_num' wx:if="{{scoreMark.score || scoreMark.score == 0}}">{{scoreMark.score}}</view>
+        </view>
+      </view>
+    </view>
+  </judge-comment>
+  <!--显示答案图-->
+  <view class="propModel  slideInUp" wx:if="{{topic_flag && testType != 1}}" >
+    <view  class="prop_pic">
+      <image src="{{swiper.answer_img}}" mode="aspectFit"  onLoad="imgload"/>
+    </view>
+    <view class='close_btn' bindtap="closeAnswer">
+      <view class='close_icon'>
+        <image src='../../image/marking/etract.png'></image>
+      </view>
+      <view class='close_tit'>收起</view>
+    </view>
+  </view>
+  <!--多选题 规则弹窗-->
+  <view class="setProp slideInUp" wx:if="{{set_flag}}">
+    <form class="setModel" bindsubmit="resetRules">
+      <view class='close' bindtouchstart='setPropAction' data-flag='-1'>
+        <image src='../../image/marking/delete.png'></image>
+      </view>
+      <view class="title">设置打分规则</view>
+      <view class="lists">
+        <block wx:for="{{chooseCode}}" wx:key="{{index}}">
+          <view class="item" wx:if="{{item.title}}">
+            <label>{{item.title}}</label>
+            <input class="setinput" placeholder='' type='number' data-idd="{{item.idd}}" name="rule{{index+1}}" value="{{item.num}}"></input>
+          </view>
+        </block>
+      </view>
+      <view class="btns">
+        <view class='btn cancel' bindtouchstart='setPropAction' data-flag='-1'>取消</view>
+        <button class='btn conform' form-type="submit">确定</button>
+      </view>
+    </form>
+  </view>
+  <!--扩展切图区域-->
+  <view wx:if="{{no_papar}}" class="expand" style="left: {{enlargeX || screenWidth * 0.7}}px;top: {{enlargeY || screenHeight * 0.7}}px;" catchtap='enlargeHandle' bindtouchmove="enlargeMove">
+    <image src="{{isLarge?'../../image/marking/expand.png':'../../image/marking/shrink.png'}}"></image>
+  </view>
+  <view class="saveCanvas" bindtap="saveCanvasToimg" style="position: absolute;left: 24rpx;right: 24rpx;bottom: 24rpx;line-height: 88rpx;background: #00f;color: #fff;text-align: center;">保存</view>
+</view>
+<!-- 横屏 ----------------------------------------------------------------->

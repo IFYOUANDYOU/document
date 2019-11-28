@@ -1,0 +1,16 @@
+<view class="container">
+    <view class="guide">
+        <image class="image" src='/image/wrongs/cover-icon.png' mode='aspectFit'></image>
+        <view class="edit"><image class="edit-icon" src='/image/wrongs/edit-icon.png' mode='widthFix'></image> 调整</view>
+    </view>
+    <view class="actions" bindtap="bindBegin">
+        完成
+    </view>
+    <view wx:if="{{popule}}" class="popule">
+        <view class="contain">
+            <image class="complete-icon" src='/image/wrongs/complete-icon.png' mode='widthFix'></image>
+            <view class="title">模版设置成功</view>
+            <view class="info">下次生成错题集将使用此模版</view>
+        </view>
+    </view>
+</view>

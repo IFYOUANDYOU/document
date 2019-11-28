@@ -1,0 +1,119 @@
+<view class="container">
+    <view class='page-header'>
+        <view class='exam-name'>{{examName}}</view>
+        <view class='student-name'>学生：{{studentName}}</view>
+    </view>
+    <view class="page-summary">
+        <view class="left">
+            <view class='number'>
+                错题数：
+                <text>{{summary.errors}}</text>
+            </view>
+            <view class='number'>
+                知识点数：
+                <text>{{summary.points}}</text>
+            </view>
+            <view class='number'>
+                丢分知识点数：
+                <text>{{summary.lostPoints}}</text>
+            </view>
+        </view>
+        <view class="right" id="rightCanvas">
+            <canvas class="scoreCanvas" canvas-id="scoreAvg"></canvas>
+            <view class="scoreText">
+                {{scoreAvg + '%'}}
+                <text>击败率</text>
+            </view>
+        </view>
+    </view>
+    <view class="content">
+        <view wx:if="{{wrongList.length==0}}" class='empty-info'>
+            <image mode="scaleToFill" src="/image/wrongs/empty-icon.png"></image>
+            <view>该生本次考试没有错题</view>
+        </view>
+        <scroll-view class="wronglist-view" enable-back-to-top scroll-into-view="{{toView}}" scroll-y="true" scroll-with-animation="true" bindscroll="onPageScroll">
+            <block wx:for="{{wrongList}}" wx:key="{{item.id}}">
+                <view class="topic-item" id="{{ 'inToView' + item.id}}">
+                    <view class="topic-num {{item.toggle ? 'active' : ''}}" data-toggle="{{item.toggle}}" data-info="{{item}}" data-index="{{index}}" bindtap="showContent">
+                        <text class="icon">{{item.questionNum}}</text>
+                        <view wx:if="{{item.questionList.length != 0}}" class="num-tag">
+                            举一反三（{{item.questionList.length}}）
+                        </view>
+                    </view>
+                    <view wx:if="{{item.toggle}}" class="topic-info">
+                        <!-- 题干 -->
+                        <view class="topic-title">
+                            <view class="title-tag">题目</view>
+                            <view class="title-info" wx:if="{{item.questionPic}}">
+                                <image mode="widthFix" src="{{item.questionPic}}"></image>
+                            </view>
+                        </view>
+                        <!-- 得分总结 -->
+                        <view class="topic-score">
+                            <view class="left">
+                                学生得分：
+                                <text>{{item.stuScore}}</text>
+                                /{{item.score}}分
+                            </view>
+                            <view class="left">
+                                班级平均得分：
+                                <text>{{item.stuScore}}</text>
+                                /{{item.classAvg}}分
+                            </view>
+                        </view>
+                        <!-- 知识点 -->
+                        <view wx:if="{{item.knowledgePointName}}" class="topic-knowledge">
+                            题目知识点：
+                            <text>{{item.knowledgePointName}}</text>
+                        </view>
+                        <!-- 答案 -->
+                        <view class="topic-answer">
+                            <view class="title-tag">参考答案</view>
+                            <view class="answer-info">
+                                <image wx:if="{{item.answerPic}}" mode="widthFix" src="{{item.answerPic}}"></image>
+                                <text wx:else>{{item.answer}}</text>
+                            </view>
+                        </view>
+                        <!-- 解析 -->
+                        <view class="topic-parse">
+                            <view class="title-tag">答案解析</view>
+                            <view class="parse-info" wx:if="{{item.parse}}">
+                                <rich-text nodes="{{item.parse}}"></rich-text>
+                            </view>
+                        </view>
+                        <!-- 相似题 -->
+                        <view class="topic-similar">
+                            <view class="similar-title">举一反三</view>
+                            <block wx:for="{{item.questionList}}" wx:for-item="similar" wx:for-index="idx" wx:key="{{similar.id}}">
+                                <view class="similar-tt {{similar.toggle ? 'active' : ''}}" data-info="{{similar}}" data-toggle="{{similar.toggle}}" data-index="{{idx}}" data-idx="{{index}}" bindtap="showSimilar">
+                                    <text class="icon"></text>
+                                    {{similar.area}}
+                                </view>
+                                <view wx:if="{{similar.toggle}}" class="similar-info">
+                                    <view class="topic-title">
+                                        <view class="title-tag">题目</view>
+                                        <view class="title-info" wx:if="{{similar.title}}">
+                                            <rich-text nodes="{{similar.title}}"></rich-text>
+                                        </view>
+                                    </view>
+                                    <view class="topic-answer">
+                                        <view class="title-tag">参考答案</view>
+                                        <view class="answer-info" wx:if="{{similar.answer2}}">
+                                            <rich-text nodes="{{similar.answer2}}"></rich-text>
+                                        </view>
+                                    </view>
+                                    <view class="topic-parse">
+                                        <view class="title-tag">答案解析</view>
+                                        <view class="parse-info" wx:if="{{similar.parse}}">
+                                            <rich-text nodes="{{similar.parse}}"></rich-text>
+                                        </view>
+                                    </view>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </scroll-view>
+    </view>
+</view>

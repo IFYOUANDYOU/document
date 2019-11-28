@@ -1,0 +1,46 @@
+<!--pages/mycollec/mycollec.wxml-->
+<view class="container {{tabType==2?'c_back':''}}">
+  <form class="collectform" bindsubmit="sendCollect" bindreset="backTopaper">
+    <view class='nav'>
+      <button class='back' form-type="reset">{{tabType==1?'取消':''}}</button>
+      <view class='tab'>
+        <view class="tabar {{tabType==1?'tab_active':''}}" bindtap='tabHandle' data-type="1">
+          收藏理由
+        </view>
+        <view class="tabar {{tabType==2?'tab_active':''}}" bindtap='tabHandle' data-type="2">
+          收藏列表
+        </view>
+      </view>
+      <button class='sure' form-type="submit">{{tabType==1?'确定':''}}</button>
+    </view>
+    <view class='cole_input' wx:if="{{tabType==1}}">
+      <input type='text' placeholder="收藏理由" name="reason" adjust-position="false" bindconfirm="complete" bindblur="complete"></input>
+    </view>
+  </form>
+  
+  <view class='useTag'  wx:if="{{tabType==1}}">
+    <view class='title'>常用标签</view>
+    <view class='taglist'>
+      <block wx:for="{{tagArr}}" wx:key="{{index}}">
+        <view  bindtap="pushTag" data-index="{{index}}"  data-tag="{{item.name}}" class="tag {{item.status?'hover_tab':''}}">{{item.name}}</view>
+      </block>
+    </view>
+  </view>
+  <view class='paparList' wx:if="{{tabType == 2}}">
+    <view class='option' wx:for="{{testList}}" wx:for-item="list" wx:key="{{list.id}}" data-aid="{{list.id}}" data-eid="{{list.examId}}" data-qid="{{list.questionId}}" bindtap='goMarking' data-index="{{index}}">
+      <view class='img'>
+        <image src='{{list.answerPostion[0].url + oss_url}}' mode="aspectFit" ></image>
+      </view>
+      <view class='info'>
+        <block wx:for="{{list.label}}"  wx:for-index="n" wx:key="{{n}}">
+          <view class='tag p_tag' wx:if="{{item}}">{{item}}</view>
+        </block>
+        <view class='text'>{{list.collectReason?list.collectReason:''}}</view>
+      </view>
+      <view class='close' catchtap='deleteColect' data-id="{{list.id}}">
+        <image src='../../image/marking/delete.png'></image>
+      </view>
+    </view>
+    <view class="empty" wx:if="{{testList.length == 0}}">暂无收藏项目</view>
+  </view>
+</view>

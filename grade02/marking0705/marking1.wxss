@@ -1,0 +1,1047 @@
+@import '../../plugins/animate/animate.wxss';
+
+page {
+  height: 100vh;
+}
+.wrapper{
+  height: 100%;
+  width: 100%;
+  background-color: #EBF0F5;
+  position: relative;
+  display: block;
+}
+/* topbar */
+.topbar {
+  width: 100%;
+  height: 12.8vmin;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  position: absolute;
+  left: 0vmin;
+  top: 0vmin;
+}
+
+.topbar .item {
+  width: 9.6vmin;
+  height: 12.8vmin;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.topbar .handle {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0vmin;
+  top: 0vmin;
+  z-index: 99;
+}
+
+.topbar .item image {
+  width: 6.4vmin;
+  height: 6.4vmin;
+}
+
+.topbar .select {
+  width: 34.8vmin;
+  height: 9.6vmin;
+  border: 0.13333vmin solid #C4C8CC;
+  border-radius: 1.06667vmin;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  margin-right: 1.6vmin;
+}
+
+.topbar .select .student_name {
+  width: 26.26667vmin;
+  height: 100%;
+}
+
+.topbar .select .student_name image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.topbar .select .select_icon {
+  width: 8.53333vmin;
+  height: 100%;
+  background-color: #C4C8CC;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.topbar .student_list {
+  width: 100%;
+  position: absolute;
+  top: 13.33333vmin;
+  max-height: calc(100vh - tovmin(110));
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  z-index: 100;
+}
+
+.topbar .list_img {
+  width: 100%;
+  height: 9.6vmin;
+}
+
+.topbar .list_img image {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.float_bar{
+  width: 364rpx;
+  height: 90rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  left: 32rpx;
+  top: 124rpx;
+  border-radius: 8rpx;
+}
+.float_bar::after{
+  content: '';
+  display: inline-block;
+  width: 22rpx;
+  height: 22rpx;
+  background-color: #fff;
+  position: absolute;
+  left: 80rpx;
+  top: -10rpx;
+  transform: rotate(45deg);
+}
+.float_bar_text::after{
+  left: 165rpx;
+}
+.f_bar{
+  width: 38rpx;
+  height: 40rpx;
+}
+.f_bar image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+._box{
+  width: 100%;
+  height:700rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-60%);
+}
+.pic{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.swiper-item{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.swiper-active{
+  animation: rights 0.2s linear;
+}
+.swiper-actived{
+  animation: lefts 0.2s linear;
+}
+
+@keyframes lefts{
+  from{transform: translateX(-100%)}
+  to{transform: translateX(0)}
+}
+@keyframes rights{
+  from{transform: translateX(100%)}
+  to{transform: translateX(0)}
+}
+
+
+/* keybar 打分键盘 */
+.keybar {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: height .3s;
+  transition: height .3s;
+}
+
+.keybar .keycode {
+  width: 92vmin;
+  /* height: tovmin(174); */
+  height: auto;
+  padding: 2.66667vmin;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  position: relative;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.keybar .keycode .code {
+  width: 12vmin;
+  height: 12vmin;
+  font-size: 4.53333vmin;
+  color: #1D2023;
+  font-weight: 500;
+  line-height: 12vmin;
+  text-align: center;
+  position: relative;
+  margin: 0.53333vmin 0.26667vmin;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  border: 0.13333vmin solid #D7DCE0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 1.06667vmin;
+}
+
+.keybar .keycode_active {
+  background-color: #565E66;
+  color: #fff;
+  border-radius: 1.06667vmin;
+}
+
+.keybar .code image {
+  width: 100%;
+  height: 100%;
+}
+
+.keybar .code-text {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0vmin;
+  top: 0vmin;
+  line-height: 12vmin;
+  text-align: center;
+}
+
+.keybar .text_active {
+  color: #fff;
+}
+
+.keybar .bubble {
+  width: 16vmin;
+  height: 16vmin;
+  position: absolute;
+  left: -1.86667vmin;
+  top: -18.66667vmin;
+  z-index: 10;
+  background-color: #565E66;
+  border-radius: 1.06667vmin;
+}
+
+.keybar .bubble::after {
+  content: '';
+  display: inline-block;
+  width: 2.93333vmin;
+  height: 2.93333vmin;
+  background-color: #565E66;
+  -webkit-transform: rotate(45deg) translateX(-50%);
+          transform: rotate(45deg) translateX(-50%);
+  position: absolute;
+  left: 50%;
+  bottom: -2.66667vmin;
+}
+
+.keybar .bubble image {
+  width: 100%;
+  height: 100%;
+}
+
+.keybar .bubble text {
+  font-size: 6.4vmin;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -55%);
+          transform: translate(-50%, -55%);
+}
+
+.keybar .score {
+  width: 92vmin;
+  height: auto;
+  position: absolute;
+  left: 4vmin;
+  top: -11.06667vmin;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* retract */
+.retract {
+  width: 10.8vmin;
+  height: 10.66667vmin;
+  position: relative;
+}
+
+.retract image {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* magnifier  放大图片按钮 */
+.magnifier {
+  width: 14.93333vmin;
+  height: 14.93333vmin;
+  position: absolute;
+  right: 3.73333vmin;
+  bottom: 38.93333vmin;
+  z-index: 100;
+}
+
+.magnifier image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* score_bar */
+.score_bar {
+  width: 8.53333vmin;
+  height: 8.53333vmin;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 600;
+  font-size: 4.8vmin;
+  background-color: #33AAFF;
+  text-align: center;
+  line-height: 8.53333vmin;
+  margin-right: 1.33333vmin;
+}
+
+.score_bar .wait_bar {
+  border: 0.13333vmin solid #33AAFF;
+  background-color: #CAE4F7;
+}
+
+.score_bar .dotted_bar {
+  border: 0.13333vmin dashed #33AAFF;
+  background-color: transparent;
+}
+
+/* 横屏下样式 */
+.landscape {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media all and (orientation: landscape) {
+  .topbar, ._box, .keybar {
+    position: static;
+    height: 100%;
+  }
+  /* 横屏下  topbar */
+  .topbar {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 12.8vmin;
+    height: 100%;
+  }
+  .topbar .item {
+    margin: 0;
+    width: 12.8vmin;
+    height: 12.8vmin;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .topbar .item image {
+    width: 6.4vmin;
+    height: 6.4vmin;
+  }
+  /* 横屏下  _box */
+  ._box {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+  /* 横屏下  keybar */
+  .keybar {
+    width: auto;
+    height: 100%;
+    right: 0;
+  }
+  .keybar .keycode {
+    width: auto;
+    height: 38.13333vmin;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+/*横屏样式*/
+.t_topbar{
+  width: 45rpx;
+  height: 100%;
+  background-color: #fff; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.t_topbar .t_item{
+  width: 45rpx;
+  height: 45rpx;
+  position: relative;
+}
+.t_topbar .texts{
+  font-size: 16rpx;
+  width: 36rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+}
+.t_topbar .t_line{
+  width: 28rpx;
+  height: 2rpx;
+  background-color: #F0F2F5;
+}
+.t_box{
+  /* width: 422rpx; */
+  width: 460rpx;
+  /* height: 312rpx; */
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-65%,-50%);
+}
+.t_keybar{
+  /* width: 116rpx; */
+  width: auto;
+  height: 100%;
+  background-color: #E1E3E6;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width .3s ;
+}
+.t_keycode{
+  width: auto;
+  height:286rpx;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: space-between; 
+  align-content:space-between;
+  padding: 0rpx 14rpx; 
+}
+.t_code{
+  width: 45rpx;
+  height: 46rpx;
+  font-size: 18rpx;
+  color: #ff7a00;
+  font-weight: 500;
+  line-height: 46rpx;
+  text-align: center;
+  position: relative;
+  margin-right: 2rpx;
+  flex: 0 0 auto;
+}
+.t_code text{
+  display: inline-block;
+  width: 100%;
+  height: 100%rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 46rpx;
+  text-align: center;
+}
+.t_bubble{
+  width: 60rpx;
+  height: 62rpx;
+  position: absolute;
+  top: -8rpx;
+  left: -64rpx;
+  z-index: 10;
+  transform: rotate(-90deg);
+}
+.t_bubble text{
+  font-size: 27rpx;
+  color: #ff7a00;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-55%) rotate(90deg);
+}
+.wrapper .t_moreCode{
+  /* width: 455rpx; */
+  width: auto;
+}
+.wrapper .t_moreKey{
+  /* width: 436rpx;
+  height: 324rpx; */
+  /* width: 197rpx; */
+}
+.t_retract{
+  width: 45rpx;
+  height: 46rpx;
+  position: relative;
+  transform: rotate(-90deg);
+}
+.t_score{
+  width: auto;
+  height: 286rpx;
+  position: absolute;
+  top: 40rpx;
+  left: -45rpx;
+}
+.t_score_bar{
+  width: 36rpx;
+  height: 36rpx;
+  box-sizing: border-box;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 600;
+  font-size: 20rpx;
+  background-color: #33AAFF;
+  text-align: center;
+  line-height: 36rpx;
+  margin-bottom: 6rpx;
+}
+
+.textaras{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+.move_a{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+.move_a .move_v{
+  width: 248rpx;
+  height:auto;
+  min-height: 48rpx;
+  border: 1px solid #ff7a00;
+  border-radius: 8rpx;
+}
+/* ._input,._input1{
+  color: #ff7a00;
+  font-size: 24rpx;
+  font-weight: normal;
+  width: 100%;
+  height: 48rpx;
+  padding-left: 10rpx;
+} */
+._input1{
+  width:140rpx;
+  height:27rpx;
+  font-size: 14rpx;
+}
+.move_a ._move_v{
+  width:140rpx;
+  height:auto;
+  min-height:27rpx;
+  border: 1px solid #ff7a00;
+  border-radius: 8rpx;
+}
+
+._textara{
+  width: 248rpx;
+  height: 48rpx;
+  font-size: 24rpx;
+  color: #ff7a00;
+  position: absolute;
+  line-height: 48rpx;
+  padding-left: 10rpx;
+}
+.r__textara{
+  width: 140rpx;
+  height: 24rpx;
+  font-size: 14rpx;
+  color: #ff7a00;
+  position: absolute;
+  line-height: 27rpx;
+  padding-left: 6rpx;
+}
+.swiper{
+  width: 100%;
+  height: 100%;
+}
+.empty{
+  width: 81rpx;
+  height: 82rpx;
+  background-color: transparent;
+}
+._empty{
+  width: 45rpx;
+  height: 46rpx;
+  background-color: transparent;
+}
+.t_texts{
+  width: 45rpx;
+  height: 45rpx;
+  display: flex;
+  flex-direction: column;
+}
+.t_texts .t_t_t{
+  width: 100%;
+  height: 22rpx;
+  line-height: 22rpx;
+  text-align: center;
+  font-size: 16rpx;
+}
+/*图标部分*/
+.error{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+/* .j-error{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(-10%);
+} */
+.e_icon{
+  width: 56rpx;
+  height: 40rpx;
+  position: absolute;
+}
+.error .right_icon{
+  width: 65rpx;
+  height: 49rpx;
+}
+.e_icon image{
+  width: 100%;
+  height: 100%;
+}
+.icon_num{
+  font-size: 34rpx;
+  color: #FF6047;
+  font-weight: 600;
+}
+.t_icon{
+  width: 24rpx;
+  height: 24rpx;
+  position: absolute;
+  transform: translate(-50%,-50%)
+}
+.no_papar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.nopic_view{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.no_pic{
+  width:269rpx;
+  height: 276rpx; 
+}
+.no_pic image,
+._no_pic image{
+  width: 100%;
+  height: 100%;
+}
+.no_text{
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #818D99;
+  margin-top: 23rpx;
+  text-align: center;
+}
+._textara{
+  width: 248rpx;
+  height: 48rpx;
+  font-size: 24rpx;
+  color: #ff7a00;
+  position: absolute;
+  line-height: 48rpx;
+  padding-left: 10rpx;
+}
+.textaras{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 248rpx;
+  height:auto;
+}
+._input,._input1{
+  color: #ff7a00;
+  font-size: 24rpx;
+  font-weight: normal;
+  width: 100%;
+  height: 48rpx;
+  padding: 0;
+  margin: 0;
+  padding-left: 10rpx;
+  border: 1px solid #ff7a00;
+  border-radius: 8rpx;
+  background-color: transparent;
+}
+/*参考答案*/
+.reference{
+  width:200rpx;
+  height: 68rpx;
+  color: #fff;
+  background-color: #33AAFF;
+  border-radius: 6rpx;
+  line-height: 68rpx;
+  text-align: center;
+  position: absolute;
+  left: 20rpx;
+  top: 100rpx; 
+}
+.re_paper{
+  left:240rpx;
+}
+
+/*弹窗部分*/
+.propModel{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 101;
+}
+.prop_content{
+  width:590rpx;
+  /* height: 459rpx; */
+  background-color: #fff;
+  border-radius: 6rpx; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.prop_close{
+  position: absolute;
+  top: 20rpx;
+  right:32rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+.prop_close image{
+  width: 100%;
+  height: 100%;
+}
+.prop_title{
+  color: #A1A2A6;
+  font-size: 28rpx;
+  width: 526rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+  margin: 0 auto 18rpx;
+}
+.prop_option{
+  width: 526rpx;
+  height: 68rpx;
+  margin: 0 auto 24rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.prop_left{
+  color: #19191A;
+  font-size: 32rpx;
+}
+.prop_right{
+  width: 377rpx;
+  height: 68rpx;
+  border-radius: 6rpx;
+  background-color: rgba(240,242,245,1);
+}
+.prop_right .prop_input{
+  border: none;
+  width: 352rpx;
+  padding-left: 25rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  color: #19191A;
+  font-size: 32rpx;
+  font-weight: 600;
+  background-color: transparent;
+}
+.prop_line{
+  width: 580rpx;
+  height: 2rpx;
+  background-color: #F0F2F5;
+}
+.prop_action{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.prop_btn{
+  width: 294rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: #A1A2A6;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.prop_vertical{
+  width: 2rpx;
+  height: 40rpx;
+  background-color: #F0F2F5;
+}
+.prop_active{
+  color: #33AAFF;
+}
+
+
+/*tips多选题 提示*/
+.tips{
+  width: 690rpx;
+  height: 121rpx;
+  margin: 0 auto 0;
+  padding-top: 199rpx;
+}
+.tips .tips_title{
+  width: 100%;
+  height: 68rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tips_answer{
+  font-size: 32rpx;
+  color: #FF7A00;
+  font-weight: 600;
+}
+.tips_seting{
+  width: 200rpx;
+  height: 68rpx;
+  text-align: center;
+  line-height: 68rpx;
+  border-radius: 6rpx;
+  background-color: #33AAFF;
+  color: #fff;
+  font-size: 28rpx;
+}
+.tips_rule{
+  width: 100%;
+  height: 112rpx;
+  margin-top: 12rpx;
+  border-radius: 6rpx;
+  background-color: #D2E6F7;
+  position: relative;
+}
+.tips_rule::before{
+  display: inline-block;
+  content: "";
+  width: 10rpx;
+  height: 10rpx;
+  background-color: #D2E6F7;
+  transform: rotate(45deg);
+  position: absolute;
+  top:-5rpx;
+  right: 90rpx;
+}
+.tips_tit,
+.tips_text{
+  font-size:28rpx;
+  color:  #33AAFF;
+  margin-left: 25rpx;
+}
+.tips_tit{
+ font-weight: 600;
+ padding-top: 22rpx;
+ margin-bottom: 10rpx;
+}
+.canvasd{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.can_line{
+  height: 2rpx;
+  background-color: #ff7a00;
+  position: absolute;
+  top: 0;
+  left:0;
+  transform-origin:0% 0%;
+}
+.prop_box{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 4rpx;
+  background-color: #fff;
+  line-height: 100rpx;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.prop_pic{
+  width: 100%;
+  height: calc( 100vh - 124rpx);
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+.close_btn{
+  width: 160rpx;
+  height: 72rpx;
+  background-color: #BBBFC2;
+  border-radius: 36rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  bottom: 48rpx;
+  transform: translateX(-50%);
+}
+.close_icon{
+  width: 24rpx;
+  height: 19rpx;
+  margin-right: 16rpx;
+}
+.close_icon image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.close_tit{
+  font-size: 28rpx;
+  color: #fff;
+}
+.mare_pic{
+  width: 70rpx;
+}
+
+
+.j_height{
+  height: calc(100% - 100rpx);
+}
+
+
+
+
+
+
+/********横屏样式********/
+.landscape .topbar {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 12.8vmin;
+  height: 100%;
+}
+
+.landscape .topbar .item {
+  margin: 0;
+  width: 12.8vmin;
+  height: 12.8vmin;
+  
+}
+
+.landscape .topbar .item image {
+  width: 6.4vmin;
+  height: 6.4vmin;
+}

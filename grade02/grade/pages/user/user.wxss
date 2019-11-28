@@ -1,0 +1,132 @@
+/* pages/user/user.wxss */
+.container{
+  width: 100%;
+  background: #FFF;
+  padding-bottom: 102px;
+  overflow: hidden;
+}
+.header{
+  width: 690rpx;
+  /* height: 200rpx; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 55rpx auto 0;
+}
+image{
+  width: 100%;
+  height: 100%;
+}
+.avator{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background-color: #FFA900;
+  margin-right: 34rpx;
+}
+.avator image{
+  border-radius: 50%;
+}
+.info{
+  margin-left: 30rpx;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+}
+.name{
+  display: flex;
+  align-items: center;
+}
+.name .text{
+  font-size: 34rpx;
+  color: #1D2023;
+  max-width: 320rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.name .edit{
+  width: 33rpx;
+  height: 33rpx;
+  margin-left: 30rpx;
+  position: relative;
+  top: -3rpx;
+}
+.name .input{
+  width: 300rpx;
+  height: 56rpx;
+  border: 1rpx solid #818D99;
+  border-radius: 8rpx;
+  line-height: 56rpx;
+}
+.input input{
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  padding: 0 33rpx;
+  box-sizing: border-box;
+  font-size: 34rpx;
+  color: #1D2023;
+}
+.phone{
+  font-size: 48rpx;
+  color: #1D2023;
+  font-weight: 600;
+  margin-top: 20rpx;
+}
+.bind_phone{
+  width: 687rpx;
+  height: 213rpx;
+  margin: 56rpx auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #EBF0F5;
+  border-radius: 24rpx;
+}
+.bind_phone .bind_tt{
+  font-size: 28rpx;
+  color: #818D99;
+  margin-bottom: 32rpx;
+}
+.bind_phone .bind_btn{
+  width: 280rpx;
+  height: 72rpx;
+  background:linear-gradient(90deg,rgba(255,160,51,1) 0%,rgba(255,203,82,1) 100%);
+  border-radius:36rpx;
+  line-height: 72rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 34rpx;
+}
+.content{
+  width: 690rpx;
+  margin: 55rpx auto 0;
+}
+.content .option{
+  display: flex;
+  width: 100%;
+  height: 120rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+.option .text{
+  font-size: 34rpx;
+  color: #1D2023;
+}
+.action{
+  display: flex;
+}
+.action .tit{
+  font-size: 28rpx;
+  color: #818D99;
+}
+.action .img{
+  width: 12rpx;
+  height:30rpx;
+  margin-left: 23rpx;
+  position: relative;
+  top: -3rpx;
+}

@@ -1,0 +1,137 @@
+@mixin fontbold($size,$color) {
+    font-family: SourceHanSansCN-Bold;
+    font-weight: bold;
+    font-size: $size;
+    color: $color;
+}
+@mixin fontnormal($size,$color) {
+    font-family: SourceHanSansCN-Normal;
+    font-weight: 400;
+    font-size: $size;
+    color: $color;
+}
+@mixin displayflex($x, $y) {
+    display: flex;
+    justify-content: $x;
+    align-items: $y;
+}
+
+.retain{
+    margin: 24px 0;
+    .topic_title,.topic_answer,.knowledge{
+        padding: 16px;
+        border: 2px solid #747272;
+        border-radius: 8px;
+    }
+    .topic_title,.topic_knowledge{
+        margin-top: -2px;
+    }
+    .topic_answer{
+        margin-top: 12px;
+    }
+    .topic_knowledge{
+        text-align: right;
+        line-height: 40px;
+    }
+    .knowledge{
+        padding: 0 12px;
+    }
+    .topic_modify{
+        display: flex;
+    }
+}
+.topic_modify .label{
+    flex-shrink: 0;
+}
+.topic_modify .modify{
+    flex: 1;
+}
+
+
+.answer-view {
+    img{
+        max-width: 100%;
+    }
+    .answer,.explanation{
+        @include displayflex(flex-start,flex-start);
+        margin-bottom: 38px;
+        @include fontnormal(24px, #000);
+    }
+    .label{
+        flex-shrink: 0;
+    }
+    .information{
+        flex: 1;
+    }
+}
+
+.answer_title {
+    @include displayflex(space-between, center);
+    @include fontbold(32px, #000);
+    line-height: 72px;
+    .icon{
+        margin-right: 8px;
+    }
+}
+
+.wrong{
+    margin: 24px 0;
+    .subject{
+        background: #000;
+        @include fontbold(24px, #fff);
+        margin-bottom: 7px;
+        line-height: 44px;
+        &::after{
+            display: block;
+            content: "";
+            width: 7px;
+            height: 11px;
+        }
+    }
+}
+.similar_title{
+    margin-bottom: 20px;
+}
+.similar{
+    .q_num{
+        line-height: 28px;
+        border: 2px solid #ccc;
+        border-radius: 16px;
+        padding: 0 18px;
+        margin-right: 18px;
+        @include fontbold(20px, #333);
+    }
+}
+.frequency_title{
+    border-bottom: 1px solid #ccc;
+    line-height: 62px;
+    margin-bottom: 18px;
+    @include displayflex(space-between, center);
+    @include fontbold(24px, #333);
+    .batch{
+        @include fontnormal(20px, #333);
+    }
+}
+.frequency{
+    .q_num{
+        line-height: 43px;
+        width: 102px;
+        margin-right: 18px;
+        text-align: center;
+        &::before,&::after{
+            content: "";
+        }
+        &::before{
+            width: 9px;
+            height: 43px;
+        }
+        &::after{
+            width: 19px;
+            height: 36px;
+        }
+        @include fontbold(20px, #333);
+    }
+    .explanation{
+        margin-left: 120px;
+    }
+}

@@ -1,0 +1,23 @@
+<view  class="login-wrapper" style="height:{{innerHeight}}rpx">
+  <image class="logo" src="/image/logo.png" mode="aspectFit" />
+  <view class="container">
+    <view class="title">请为扫描端命名</view>
+    <view class="item">
+      <input style='font-size:32rpx;' maxlength="11" value="{{number}}" bindinput="bindKeyInput" placeholder="请为扫描端命名" />
+    </view>
+
+    <view class='input-wrapper {{inputType==3?"isFocus":""}}'>
+      <input value='{{school}}' adjust-position="true" placeholder='请输入归属学校' bindinput="searchSchool" bindblur="bindKeyBlur" bindfocus="setThird"></input>
+      <image mode="scaleToFill" bindtap="clearSchool" src="/image/clear.png"/>
+      <view class='school-wrapper' hidden='{{showSearch}}'>
+        <view class='content'>
+          <view class='item' wx:for="{{schoolList}}" data-info="{{item}}" bindtap='checkItem' wx:key="{{item}}">{{item.school_name}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='school-info'>输入关键字即可选择归属学校</view>
+
+    <view class="submit-con" wx:if="{{number&&school}}" bindtap="bindNumber">确定</view>
+    <view class="submit-con-two" wx:else>确定</view>
+  </view>
+</view>

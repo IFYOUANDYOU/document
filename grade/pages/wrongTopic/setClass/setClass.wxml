@@ -1,0 +1,14 @@
+<view class="container">
+    <view class="page-title">
+        请选择您要查看的班级
+        <view class="tag">
+            <image src="/image/wrongs/config-icon.png" class="config-icon" />
+            配置错题集
+        </view>
+    </view>
+    <view class="classes">
+        <block wx:for="{{classList}}" wx:key="{{item.id}}">
+            <view data-id="{{item.id}}" class="class-item {{item.selected ? 'active' : ''}}" bindtap="selectClass">{{item.grade + item.className}}</view>
+        </block>
+    </view>
+</view>

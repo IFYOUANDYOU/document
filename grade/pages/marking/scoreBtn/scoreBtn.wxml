@@ -1,0 +1,31 @@
+<!-- 多选题 底部分值 -->
+<view class='keybar {{moreKeyCode?"moreCode":""}}'>
+    <view class="keycode {{keyrows>=2?'row2':''}} {{moreKeyCode?'row3':''}}">
+        <block wx:if="{{testType == 2}}">
+            <view class="setting code" bindtouchstart='setPropAction' data-flag='1'>
+                <image src='../../image/marking/setting.png'></image>
+            </view>
+            <view class='code {{testType == 2?"setcode":""}}' wx:for="{{swiper.rule}}" wx:key="{{index}}">
+                <view class='code-text {{current == item?"text_active":""}} {{item=="···"?"openCode":""}}' bindtouchstart="keybarTouchStart" bindtouchend="keybarTouchEnd" data-index="{{item}}" wx:if="{{index != 61 && index != 62}}">
+                    {{item}}
+                </view>
+                <!-- 键盘气泡 -->
+                <view class='bubble' wx:if="{{current == item && item != '···' && item_current != ''}}">
+                    <text>{{longTap?item+0.5:item}}</text>
+                </view>
+            </view>
+        </block>
+        <block wx:else>
+            <view class='code' wx:for="{{keyCode}}" wx:key="{{index}}">
+                <view class='code-text {{current == index?"text_active":""}}  {{item=="···"?"openCode":""}}' bindtouchstart="keybarTouchStart" bindtouchend="keybarTouchEnd" hover-class='keycode_active' data-index="{{item}}" wx:if="{{index != 61 && index != 62}}">
+                    {{item}}
+                </view>
+                <!-- 键盘气泡 -->
+                <view class='bubble' wx:if="{{current == item && item != '···' && current_score}}">
+                    <text>{{longTap ? item + 0.5 : item}}</text>
+                </view>
+            </view>
+            <view class='empty' wx:for="{{keyCodeNum}}" wx:key="{{item}}"></view>
+        </block>
+    </view>
+</view>

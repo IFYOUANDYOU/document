@@ -1,0 +1,21 @@
+<!--pages/wrongTopic/scoreItem/scoreItem.wxml-->
+<view class='container'>
+
+  <view class='item' wx:for="{{anserArr}}" wx:key="{{index}}">
+    <view><text>{{index==0?'满分':''}}</text>{{item.start}}至</view>
+    <input type='number' data-info="{{index}}" value='{{item.end}}' bindinput='bindKeyInput'></input>
+  </view>
+  <!-- <view class='item'>
+    <view>50至</view>
+    <input type='number'></input>
+  </view> -->
+  <view class='add' bindtap='addRange'>
+     <image  mode="scaleToFill"  src="/image/cuotiji/add.png"  ></image>新增
+  </view>
+
+  <view class='item'>
+    <view>{{anserArr&&anserArr[anserArr.length-1].end}}至</view>
+    <input style='color:#818D99' value='0' disabled='true'></input>
+  </view>
+  <view class='btn' bindtap='save'>保存</view>
+</view>

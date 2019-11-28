@@ -1,0 +1,117 @@
+/* pages/wrongTopic/loseList/loseList.wxss */
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    padding: 32rpx 32rpx 60rpx;
+    box-sizing: border-box;
+}
+.top-info {
+    background:rgba(255,255,255,1);
+    box-shadow:0rpx 8rpx 32rpx 0rpx rgba(29,32,35,0.08);
+    border-radius:16rpx;
+    padding: 39rpx 41rpx 39rpx 32rpx;
+    box-sizing: border-box;
+}
+.top-info .title{
+    font-size:34rpx;
+    font-weight:bold;
+    color:rgba(29,32,35,1);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.top-info .title view{
+    width:20rpx;
+    height:20rpx;
+    background:rgba(255,170,0,1);
+    border-radius:50%;
+    margin-right: 17rpx;
+}
+.top-info .wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 48rpx;
+}
+
+.top-info .wrapper .item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.top-info .wrapper .item view:nth-child(1){
+    font-size:24rpx;
+    color:rgba(129,141,153,1);
+}
+.top-info .wrapper .item view:nth-child(2){
+    font-size:40rpx;
+    color:rgba(255,170,0,1);
+}
+
+.content  {
+    margin-top: 60rpx;
+}
+.content .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 100rpx; 
+    padding-right: 30rpx; 
+    box-sizing: border-box;
+    font-size:30rpx;
+    color:rgba(129,141,153,1);
+}
+.content .header .option {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.content .header .option  image{
+    width: 14rpx;
+    height: 10rpx;
+    margin-left: 9rpx;
+}
+.content .header .option  image:last-child{
+    margin-top: 4rpx;
+}
+.content .header view:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .student-wrapper {
+  height: calc(100vh - 468rpx);
+  overflow: scroll;
+  padding: 68rpx 52rpx 0 26rpx;
+}
+.content .student-wrapper .item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.content .student-wrapper .item view:nth-child(1){
+    font-size:34rpx;
+    flex: 0 0 230rpx;
+    color:rgba(29,32,35,1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.content .student-wrapper .item view:nth-child(1) text{
+    font-size:34rpx;
+    font-weight:bold;
+    margin-right: 47rpx;
+    color:rgba(29,32,35,1); 
+}
+.content .student-wrapper .item view:nth-child(2){
+    font-size:34rpx;
+    color:rgba(29,32,35,1);
+}
+.content .student-wrapper .item view:nth-child(3){
+    font-size:34rpx;
+    color:rgba(255,96,71,1);
+}

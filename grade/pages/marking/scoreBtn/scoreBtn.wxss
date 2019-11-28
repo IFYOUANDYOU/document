@@ -1,0 +1,240 @@
+/* keybar 打分键盘 */
+.keybar {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    bottom: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-transition: height .3s;
+    transition: height .3s;
+  }
+  
+  .keybar .keycode {
+    width: 100%;
+    /* height: tovmin(174); */
+    height: auto;
+    padding: 2.13333vmin;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    position: relative;
+    /* -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between; */
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  
+  .keybar .code {
+    width: 12vmin;
+    height: 12vmin;
+    font-size: 3.2vmin;
+    color: #1D2023;
+    font-weight: 500;
+    line-height: 12vmin;
+    text-align: center;
+    position: relative;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    border: 1px solid #D7DCE0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    border-radius: 1.06667vmin;
+  }
+  .keybar .code,.keybar .empty{
+    margin: 0.53333vmin auto;
+  }
+  
+  .keybar .code image {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .keybar .code-text {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0vmin;
+    top: 0vmin;
+    line-height: 12vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .keybar .openCode{
+    font-size: 2.8vmin;
+  }
+  
+  .keybar .text_active,.keybar .keycode_active {
+    background-color: #565E66;
+    color: #fff;
+    border-radius: 1.06667vmin;
+  }
+  
+  .keybar .bubble {
+    width: 16vmin;
+    height: 16vmin;
+    position: absolute;
+    left: -1.86667vmin;
+    top: -18.66667vmin;
+    z-index: 10;
+    background-color: #565E66;
+    border-radius: 1.06667vmin;
+  }
+  
+  .keybar .bubble::after {
+    content: '';
+    display: inline-block;
+    width: 2.93333vmin;
+    height: 2.93333vmin;
+    background-color: #565E66;
+    -webkit-transform: rotate(45deg) translateX(-50%);
+            transform: rotate(45deg) translateX(-50%);
+    position: absolute;
+    left: 50%;
+    bottom: -2.4vmin;
+  }
+  
+  .keybar .bubble image {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .keybar .bubble text {
+    font-size: 6.4vmin;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -55%);
+            transform: translate(-50%, -55%);
+  }
+  
+  .keybar .score {
+    width: 92vmin;
+    height: auto;
+    position: absolute;
+    left: 4vmin;
+    top: -11.06667vmin;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  .keybar .setcode {
+    margin: 0.53333vmin;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  
+  .keybar .setcode .bubble {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+  
+  .keybar .empty {
+    width: 12vmin;
+    height: 12vmin;
+  }
+  
+  .keybar .setting {
+    -ms-flex-negative: 1;
+        flex-shrink: 1;
+    width: 12vmin;
+    height: 12vmin;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  .keybar .setting image {
+    width: 5.33333vmin;
+    height: 5.33333vmin;
+  }
+  @media all and (orientation: landscape) {
+    /* 横屏下  keybar */
+  .keybar {
+    width: auto;
+    height: 80vmin;
+    right: 8.53333vmin;
+    bottom: 2.13333vmin;
+    border-radius: 3.2vmin;
+    background: #fff;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    /* overflow: hidden; */
+  }
+  .keybar .keycode {
+    width: auto;
+    height: 80vmin;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .keybar .row2 {
+    width: 24.8vmin;
+  }
+  .keybar .row3 {
+    width: 35.33333vmin;
+  }
+  .keybar .code {
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
+    margin: 0.53333vmin;
+    line-height: 10vmin;
+  }
+  .keybar .code .code-text {
+    line-height: 10vmin;
+  }
+  .keybar .code, .keybar .empty {
+    margin: 0.26667vmin;
+    width: 10vmin;
+    height: 10vmin;
+  }
+  .keybar .bubble {
+    position: absolute;
+    left: -18.66667vmin;
+    top: -1.86667vmin;
+  }
+  .keybar .bubble::after {
+    left: auto;
+    right: -2.4vmin;
+    -webkit-transform: rotate(45deg) translateY(50%);
+    transform: rotate(45deg) translateY(50%);
+    bottom: 50%;
+  }
+
+  .keybar .setcode .bubble {
+    left: -12vmin;
+  }
+  }

@@ -1,0 +1,14 @@
+<!--pages/wrongTopic/components/trendChart/trendChart.wxml-->
+<view class='overview'>
+  <view class='title'>
+    <view><image mode="scaleToFill"  src="/image/cuotiji/jtbqs.png"></image>进退步趋势      </view>
+  </view>
+
+  <view class="container-column">
+    <ff-canvas id="column-dom-column" canvas-id="column-column" opts="{{ opts }}"></ff-canvas>
+  </view>
+  <view class='student-info'>
+    <view class='line'></view>
+    <view>{{name}}的班级排名</view>
+  </view>
+</view>

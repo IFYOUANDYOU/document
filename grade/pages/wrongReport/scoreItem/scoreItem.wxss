@@ -1,0 +1,55 @@
+/* pages/wrongTopic/scoreItem/scoreItem.wxss */
+.container {
+    height: 100vh;
+    
+    padding: 0 32rpx 0;
+    box-sizing: border-box;
+    background-color: #F9FAFC;
+}
+.container .item{
+    background-color: #fff;
+    display: flex;
+    padding: 33rpx 0 32rpx;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #EBF0F5;
+}
+.container .item view{
+    color: #818D99;
+    font-size: 34rpx;
+    flex: 0 0 180rpx;
+    text-align: right;
+}
+.container .item input{
+    padding-left: 39rpx;
+    box-sizing: border-box;
+    color: #1D2023;
+    flex: 1;
+}
+.add {
+    background-color: #fff;
+    padding: 33rpx 0 32rpx;
+    border-bottom: 1px solid #EBF0F5;
+    text-align: center;
+    font-size:32rpx;
+    font-weight:bold;
+    color:rgba(92,179,255,1);
+}
+.add image{
+   width: 25rpx;
+   height: 25rpx;
+   margin-right: 7rpx; 
+}
+.btn {
+    width:622rpx;
+    height:96rpx;
+    line-height: 96rpx;
+    text-align: center;
+    background:linear-gradient(90deg,rgba(255,160,51,1) 0%,rgba(255,203,82,1) 100%);
+    border-radius:48rpx;
+    font-size:34rpx;
+    font-weight:bold;
+    color:rgba(254,254,254,1);
+    margin: 52rpx auto 0rpx;
+}

@@ -1,0 +1,109 @@
+.container {
+    padding: 32rpx;
+    color: #1D2023;
+}
+
+.page-title {
+    padding-top: 32rpx;
+    padding-bottom: 36rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 34rpx;
+    font-weight: bold;
+}
+
+.page-title .tag {
+    font-size: 28rpx;
+    color: #5CB3FF;
+    font-weight: normal;
+}
+
+.page-title .adjust-icon {
+    width: 24rpx;
+    height: 24rpx;
+}
+
+.page-title .adjust-icon,
+.class-item .preview-icon {
+    position: relative;
+    top: 3rpx;
+    margin-right: 9rpx;
+}
+
+.class-item {
+    margin-top: 20rpx;
+    padding: 24rpx;
+    position: relative;
+    font-size: 32rpx;
+    min-height: 120rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.class-item .action {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 24rpx;
+    color: #818D99;
+}
+
+.class-item .preview-icon {
+    width: 22rpx;
+    height: 24rpx;
+}
+
+.popule {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(29, 32, 35, 0.64);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popule-contain {
+    width: 80%;
+    background: #fff;
+    border-radius: 24rpx;
+    overflow: hidden;
+}
+
+.popule-contain .title {
+    margin: 86rpx 57rpx 72rpx;
+    font-size: 34rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(255, 96, 71, 1);
+    line-height: 54rpx;
+    text-align: center;
+}
+
+.popule-contain .btns {
+    display: flex;
+    align-items: center;
+}
+
+.popule-contain .btn {
+    flex: 1;
+    text-align: center;
+    line-height: 96rpx;
+    font-size: 34rpx;
+    font-family: PingFang SC;
+    font-weight: 400;
+    color: rgba(29, 32, 35, 1);
+}
+
+.popule-contain .cancel {
+    background: rgba(215, 220, 224, 1);
+}
+
+.popule-contain .confirm {
+    background: rgba(92, 179, 255, 1);
+    color: #fff;
+}

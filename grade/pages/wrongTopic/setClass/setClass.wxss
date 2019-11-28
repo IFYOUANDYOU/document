@@ -1,0 +1,50 @@
+
+.container {
+    font-size: 28rpx;
+    overflow: hidden;
+    padding: 32rpx;
+    color: #1D2023;
+}
+
+.page-title,
+.page-title .tag {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.page-title{
+    margin-top: 32rpx;
+    font-size: 34rpx;
+    margin-bottom: 28rpx;
+}
+
+.page-title .tag {
+    color: #5CB3FF;
+}
+
+.page-title .config-icon{
+    width: 24rpx;
+    height: 18rpx;
+    margin-right: 8rpx;
+}
+
+.classes{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+    padding-top: 28rpx;
+}
+.class-item{
+    width: 48.54%;
+    line-height: 44rpx;
+    padding: 22rpx 0;
+    background: #fff;
+    border-radius: 8rpx;
+    margin-bottom: 20rpx;
+}
+.class-item.active{
+    background: #5CB3FF;
+    color: #fff;
+}

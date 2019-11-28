@@ -1,0 +1,1 @@
+<canvas canvas-id="lineCanvas" class="lineCanvas" style="width:{{canvasWidth}}px;height:{{canvasHeight}}px;}};" disable-scroll="false" bindtouchstart="canvasTouchStart" bindtouchmove="canvasTouchMove" bindtouchend="canvasTouchEnd"></canvas>

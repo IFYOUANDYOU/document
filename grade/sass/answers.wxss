@@ -1,0 +1,189 @@
+.retain {
+  margin: 24px 0;
+}
+
+.retain .topic_title, .retain .topic_answer, .retain .knowledge {
+  padding: 16px;
+  border: 2px solid #747272;
+  border-radius: 8px;
+}
+
+.retain .topic_title, .retain .topic_knowledge {
+  margin-top: -2px;
+}
+
+.retain .topic_answer {
+  margin-top: 12px;
+}
+
+.retain .topic_knowledge {
+  text-align: right;
+  line-height: 40px;
+}
+
+.retain .knowledge {
+  padding: 0 12px;
+}
+
+.retain .topic_modify {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.topic_modify .label {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.topic_modify .modify {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.answer-view img {
+  max-width: 100%;
+}
+
+.answer-view .answer, .answer-view .explanation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-bottom: 38px;
+  font-family: SourceHanSansCN-Normal;
+  font-weight: 400;
+  font-size: 24px;
+  color: #000;
+}
+
+.answer-view .label {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.answer-view .information {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.answer_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  font-size: 32px;
+  color: #000;
+  line-height: 72px;
+}
+
+.answer_title .icon {
+  margin-right: 8px;
+}
+
+.wrong {
+  margin: 24px 0;
+}
+
+.wrong .subject {
+  background: #000;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 7px;
+  line-height: 44px;
+}
+
+.wrong .subject::after {
+  display: block;
+  content: "";
+  width: 7px;
+  height: 11px;
+}
+
+.similar_title {
+  margin-bottom: 20px;
+}
+
+.similar .q_num {
+  line-height: 28px;
+  border: 2px solid #ccc;
+  border-radius: 16px;
+  padding: 0 18px;
+  margin-right: 18px;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  font-size: 20px;
+  color: #333;
+}
+
+.frequency_title {
+  border-bottom: 1px solid #ccc;
+  line-height: 62px;
+  margin-bottom: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  font-size: 24px;
+  color: #333;
+}
+
+.frequency_title .batch {
+  font-family: SourceHanSansCN-Normal;
+  font-weight: 400;
+  font-size: 20px;
+  color: #333;
+}
+
+.frequency .q_num {
+  line-height: 43px;
+  width: 102px;
+  margin-right: 18px;
+  text-align: center;
+  font-family: SourceHanSansCN-Bold;
+  font-weight: bold;
+  font-size: 20px;
+  color: #333;
+}
+
+.frequency .q_num::before, .frequency .q_num::after {
+  content: "";
+}
+
+.frequency .q_num::before {
+  width: 9px;
+  height: 43px;
+}
+
+.frequency .q_num::after {
+  width: 19px;
+  height: 36px;
+}
+
+.frequency .explanation {
+  margin-left: 120px;
+}
+/*# sourceMappingURL=answers.wxss.map */

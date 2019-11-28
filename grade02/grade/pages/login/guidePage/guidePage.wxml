@@ -1,0 +1,17 @@
+<view class="login-wrapper fadeInLogin"wx:if="{{isShow}}">
+  <image  mode="scaleToFill" src="/image/logo.png"/>
+  <view class='title'>元阅</view>
+  <view class='info'>申请获取你的公开信息(昵称、头像等)</view>
+
+  <!-- <open-data style="height:100rpx;width:100rpx;" type="userAvatarUrl"></open-data>
+  <open-data type="userNickName"></open-data> -->
+  <!-- 需要使用 button 来授权登录 -->
+
+  <button
+    wx:if="{{canIUse}}"
+    open-type="getUserInfo"
+    bindgetuserinfo="bindGetUserInfo"
+  >
+    微信授权
+  </button>
+</view>

@@ -1,0 +1,133 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"checkInvalidKey": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.5",
+	"appid": "wx6fbb7ed857801e18",
+	"projectname": "miniprogram",
+	"cloudfunctionTemplateRoot": "",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "scene",
+					"pathName": "pages/login/guidePage/guidePage",
+					"query": "scene=408D5CE30085",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "course",
+					"pathName": "pages/course/cover/cover",
+					"query": "id=3109",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "marking",
+					"pathName": "pages/marking/marking",
+					"query": "examId=3727&questionId=8008&back=false",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "grade",
+					"pathName": "pages/grade/grade",
+					"query": "examid=3727&examName=随堂测试了",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "practice",
+					"pathName": "pages/course/practice/practice",
+					"query": "qid=2698",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pc课件",
+					"pathName": "pages/login/guidePage/guidePage",
+					"query": "scene=dasdasdasdasdengchao",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "pc第一次扫描",
+					"pathName": "pages/login/guidePage/guidePage",
+					"query": "scene=dasdasdasdaspc-dengchao",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "模拟登陆",
+					"pathName": "pages/login/guidePage/guidePage",
+					"query": "testOpenId= oGEER5aAeaJ9PNIs599cvmOyMb5Q",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "确认试题结构",
+					"pathName": "pages/exam/confirmMsg/confirmMsg",
+					"query": "examId=3438",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "scene-q",
+					"pathName": "pages/login/guidePage/guidePage",
+					"query": "q=https%3A%2F%2Fwww.cnblogs.com%2Fwebenh%2Fp%2F6431700.html%3Fscene%3D14322sad1sa2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "模拟登陆",
+					"pathName": "pages/home/home",
+					"query": "testOpenId= oGEER5fCNoa3QIbRZziwqterRhM0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "模拟登陆",
+					"pathName": "pages/home/home",
+					"query": "testOpenId= oGEER5fCNoa3QIbRZziwqterRhM0",
+					"scene": null
+				}
+			]
+		}
+	}
+}

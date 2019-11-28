@@ -1,0 +1,95 @@
+/* pages/parent/parent.wxss */
+page{
+  background:rgba(235,240,245,1);
+}
+.container{
+  width: 100%;
+}
+.head{
+  margin: 32rpx;
+}
+.school_name{
+  font-size: 34rpx;
+  color: #1D2023;
+  font-weight: bold;
+  line-height: 54rpx;
+}
+.search{
+  background:rgba(255,255,255,1);
+  border-radius: 16rpx;
+  overflow: hidden;
+  margin: 16rpx 0;
+  position: relative;
+  transition: all 0.2s linear;
+}
+.class_name{
+  height: 88rpx;
+  line-height: 88rpx;
+  text-indent: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.toggle{
+  width: 32rpx;
+  height: 24rpx;
+  margin-right: 28rpx;
+}
+.search .bottom{
+  width: 32rpx;
+  height: 14rpx;
+  position: absolute;
+  top: 50%;
+  right: 30rpx;
+  transform: translateY(-50%);
+}
+.picker{
+  width: 100%;
+  height: 100%;
+  padding: 0 33rpx;
+  box-sizing: border-box;
+  font-size: 34rpx;
+  color: #1D2023;
+  line-height: 72rpx;
+}
+.editBtn{
+  width: 72rpx;
+  height: 72rpx;
+}
+image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.list{
+  -webkit-overflow-scrolling: touch;
+  background:rgba(215,220,224,0.4);
+  
+}
+.list .tr{
+  width: 100%;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.tr .num{
+  width: 88rpx;
+  font-size: 28rpx;
+  color: #818D99;
+  height: 100%;
+  line-height: 88rpx;
+  text-align: center;
+}
+.tr .name{
+  width: 628rpx;
+  font-size: 34rpx;
+  color: #1D2023;
+  border-bottom: 1rpx solid #D7DCE0;
+  height: 100%;
+  line-height: 88rpx;
+  box-sizing: border-box;
+}
+.list .tr:last-child .name{
+  border-bottom: none;
+}

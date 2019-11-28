@@ -1,0 +1,51 @@
+<view class="login-wrapper fadeInLogin">
+  <image class="logo" src="/image/login/logo.png" mode="aspectFit" />
+  <view class="container">
+    <view class="header">
+      <view class="item {{type==1?'active':''}}" bindtap="changeTab" data-info="1">
+        <image wx:if="{{type==1}}" class="img-active" src="/image/login/active.png" mode="aspectFit" />
+        密码登录
+      </view>
+      <view class="item {{type==2?'active':''}}" bindtap="changeTab" data-info="2">
+        <image wx:if="{{type==2}}" class="img-active {{type==2?'transform-left':''}}" src="/image/login/active.png" mode="aspectFit" />        
+        验证码登录</view>
+    </view>
+
+    <view class="input-wrapper" wx:if="{{type==1}}">
+      <view class="item">
+        <image class="icon-1" src="/image/login/phone.png" mode="aspectFit" />
+        <input maxlength="11" value="{{phone}}"  bindinput="bindKeyInput" value="{{phone}}" placeholder="请输入手机号码" />
+      </view>
+      <view class="item">
+        <image class="icon-2" src="/image/login/password.png" mode="aspectFit" />
+        <input maxlength="11" password value="{{password}}" bindinput="bindKeyInputThree" placeholder="请输入密码" />
+        <image class="close" src="/image/login/close.png" wx:if="{{password}}" bindtap="clearPsw" mode="aspectFit" />
+      </view>
+      <view class="submit">
+        <view class="submit-con" wx:if="{{phone&&password}}" style="background-color: rgba(255, 255, 255, 0)" data-info="1" bindtap="signIn">登录</view>
+        <view class="submit-con" wx:else style="background-color: rgba(255, 255, 255, 0.52)" data-info="1">登录</view>
+      </view>
+    </view>
+    <view class="input-wrapper" wx:if="{{type==2}}">
+      <view class="item">
+        <image class="icon-1" src="/image/login/phone.png" mode="aspectFit" />
+        <input maxlength="11" bindinput="bindKeyInput" value="{{phone}}" placeholder="请输入手机号码" />
+      </view>
+      <view class="item">
+        <image class="icon-3" src="/image/login/mail.png" mode="aspectFit" />
+        <input maxlength="11" value="{{code}}"  bindinput="bindKeyInputTwo" placeholder="请输入验证码" />
+        <view class="code-time" wx:if="{{codeTime<60&&codeTime!=0}}">{{codeTime}}s</view>
+        <view class="code-time" wx:else bindtap="getCode">获取</view>
+      </view>
+      <view class="submit">
+        <view class="submit-con" wx:if="{{phone&&code}}" style="background-color: rgba(255, 255, 255, 0)" data-info="2" bindtap="signIn">登录</view>
+        <view class="submit-con" wx:else style="background-color: rgba(255, 255, 255, 0.52)">登录</view>
+      </view>
+    </view>
+  </view>
+  <view class="footer">
+    <view class="left" wx:if="{{type==1}}" bindtap="forgetPsw">忘记密码？</view>
+    <view class="left" wx:else></view>
+    <view class="right" bindtap="toRegister">注册</view>
+  </view>
+</view>

@@ -1,0 +1,136 @@
+
+<view>
+  <scroll-view class="view-content" enable-back-to-top scroll-into-view="{{toView}}" scroll-y="true" scroll-with-animation="true"> 
+    <!-- <view id="toView1"> </view>  -->
+    <view class='header'>
+      <view class='exam-name'>{{examName}}</view>
+      <view class='name'>学生：{{studentName}}</view>
+      <view class='number'>错题数：{{contentData&&contentData.scoreNum}}</view>
+      <view class='knowledge-num'>
+        <text>犯错知识点数：{{contentData&&contentData.knowledgeNum}}</text>
+        <text>（找到知识点相关题目{{contentData&&contentData.unionKnowledageNum}}道）</text>
+      </view>
+
+      <view class='bg-header'></view>
+    </view>
+
+    <view class='container empty-info'  wx:if="{{structerArr.length==0&&showCon}}">
+      <image  mode="scaleToFill"  src="/image/cuotiji/empty_pic.png"></image>
+      <view>本次考试没有错题，请继续保持！</view>
+    </view>
+
+    <view class='container' wx:if="{{structerArr!=0&&showCon}}">
+
+      <view class='item' wx:for="{{structerArr}}" wx:key="{{index}}">
+        <view class='top'>
+          <image mode="scaleToFill" data-info="{{item}}" data-index="{{index}}" bindtap='showContent' src="{{item.active?'/image/confirmMsg/spread.png':'/image/confirmMsg/flod.png'}}"/>
+          <view class='title-wrapper'>
+            <view>{{item.question_strlevel}}</view>
+            <view data-id="{{item.id}}" bindtap='toContent' wx:if="{{item.likeQuestionNum>0}}">举一反三（{{item.likeQuestionNum}}）</view>
+          </view>
+        </view>
+
+        <view class='content' hidden="{{item.active}}">
+          <!-- 题目 -->
+          <view class='answer'>
+            <view class='title item-border'>题目</view>
+            <view class='answer-1' wx:if="{{item.childData.question_pic[0].url}}" bindtap='previewTitle' data-item="{{item.childData.question_pic}}">
+
+              <!-- 输入完成后显示文字部分 -->
+              <view class='_textara' style='top:{{childItem.y}}px;left:{{childItem.x}}px' wx:if="{{item.childData.marker.textMark.length>0}}" wx:for="{{item.childData.marker.textMark}}" wx:for-item="childItem" wx:key="{{index}}">
+                <text>{{childItem.value}}</text>
+              </view>
+              <!-- 线条集合 -->
+              <view class='canvasd' wx:if="{{item.childData.marker.lineMark.length>0}}">
+                <view class='can_line' wx:for="{{item.childData.marker.lineMark}}" wx:for-item="childItem" wx:key="{{index}}" style='width:{{childItem.width}}px;top:{{childItem.top}}px;left:{{childItem.left}}px;transform:rotate({{childItem.deg}}deg)'></view>
+              </view>
+              <!-- 选择勾选图标，勾选完成后显示图标 -->
+              <view class='error j-error' wx:if="{{item.childData.marker.scoreMark}}">
+                <image class="wrong icon" src='/image/marking/wrong.png' wx:if="{{item.childData.marker.scoreMark.icon == 1}}"></image>
+                  <image class="w_right icon" src='/image/marking/w_right.png' wx:if="{{item.childData.marker.scoreMark.icon == 3}}"></image>
+                  <image class="alright icon" src='/image/marking/alright.png' wx:if="{{item.childData.marker.scoreMark.icon == 2}}"></image>
+                  <view class='icon_num' wx:if="{{item.childData.marker.scoreMark.score || item.childData.marker.scoreMark.score == 0}}">{{item.childData.marker.scoreMark.score}}</view>
+              </view>
+
+              <image mode="widthFix" wx:for="{{item.childData.question_pic}}" wx:key="{{index}}" src="{{item.url}}"></image>
+              <!-- <rich-text nodes="{{item.childData.title}}"></rich-text> -->
+            </view>
+            <view class='answer-score'>
+              <view>学生得分：<text>{{item.childData.studentScore}}</text>/{{item.childData.score}}分</view>
+              <view>班级平均得分：<text>{{item.childData.avgScore}}</text>/{{item.childData.score}}分</view>
+            </view>
+            <view class='answer-knowledge' wx:if="{{item.childData.knowledges}}">
+              <text>题目知识点：</text>
+              <text>{{item.childData.knowledges}}</text>
+            </view>
+          </view>
+
+          <!-- 参考答案 -->
+          <view class='look-answer' wx:if="{{item.childData.type==3&&item.childData.answer_pic||item.childData.type==1&&item.childData.answer}}">
+            <view class='title item-border'>参考答案</view>
+            <image wx:if="{{item.childData.type==3&&item.childData.answer_pic}}" mode="widthFix"  src="{{item.childData.answer_pic[0].url}}"></image>
+            <view wx:if="{{item.childData.type==1&&item.childData.answer}}">{{item.childData.answer}}</view>
+          </view>
+
+          <!-- 答案解析 -->
+          <view class='answer-analyze' wx:if="{{item.childData.parse}}">
+            <view class='title item-border'>答案解析</view>
+            <rich-text nodes="{{item.childData.parse}}"></rich-text>
+          </view>
+
+          <!-- 举一反三 -->
+          <view class='infer-other'>
+            <view  id='toView_{{item.id}}' wx:if="{{item.childData&&item.childData.like.length>0}}" style='height:65rpx;width:100%;'></view>
+            <view class='infer-title' wx:if="{{item.childData&&item.childData.like.length>0}}">举一反三</view>
+            <!-- <view class='none-info' wx:if="{{item.childData.like.length==0||!item.childData.like}}">暂无数据</view> -->
+            <view wx:if="{{item.childData&&item.childData.like.length>0}}" class='ul'>
+              <view  class='li' wx:for="{{item.childData.like}}" wx:for-index="indexChild" wx:key="{{indexChild}}">
+                <view class='li-top' data-info="{{item}}" data-parent="{{index}}" data-child="{{indexChild}}" bindtap='showChild'>
+                  <image class='img-1' mode="scaleToFill" wx:if="{{item.isShow}}" src="/image/cuotiji/jyfs_1.png"></image>
+                  <image  class='img-2' mode="scaleToFill" wx:else src="/image/cuotiji/jyfs.png"></image>
+                  <text>{{item.source}}</text>
+                </view>
+                <view class='infer-content' wx:if="{{item.isShow}}">
+                    <!-- 题目 -->
+                    <view class='infer-answer'>
+                      <view class='title'>题目</view>
+                      <view class='answer-1'>
+                        <rich-text nodes="{{item.title}}"></rich-text>
+                      </view>
+                      <!-- <view>
+                        <template is="wxParse" data="{{wxParseData:htmlDom.nodes}}"/>
+                      </view> -->
+                    </view>
+
+                    <!-- 参考答案 -->
+                    <view class='infer-look-answer' wx:if="{{item.answer2}}">
+                      <view class='title'>参考答案</view>
+                      <view class='infer-look-answer-wrapper'>
+                         <rich-text nodes="{{item.answer2}}"></rich-text>
+                      </view>
+                    </view>
+
+                    <!-- 答案解析 -->
+                    <view class='infer-answer-analyze' wx:if="{{item.parse}}">
+                      <view class='title'>答案解析</view>
+                      <view class='infer-answer-analyze-wrapper'>
+                        <rich-text nodes="{{item.parse}}"></rich-text>
+                      </view>
+                    </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class='footer' wx:if="{{structerArr.length>0}}">
+      <view class='btn' bindtap='callPhone'>
+        <image></image>
+        <text>获取纸质错题集</text>
+      </view>
+      <view class='time'>接线时间：工作日9:00~17:00</view>
+    </view>
+  </scroll-view> 
+</view>

@@ -1,0 +1,38 @@
+<!--pages/wrongTopic/addressList.wxml-->
+<view style='padding-top:168rpx;'>
+<!-- 左侧列表内容部分 -->
+  <view class='top_search'>
+    <image class='book' mode="scaleToFill"  src="/image/cuotiji/book.png"/>
+    <view class='input_warpper'>
+      <image mode="scaleToFill"  src="/image/cuotiji/search.png"></image>
+      <input bindinput="search" placeholder-class="place-holder" placeholder='搜索'></input>
+    </view>
+  </view>
+  <scroll-view class="content" enable-back-to-top scroll-into-view="{{toView}}" scroll-y="true" scroll-with-animation="true" bindscroll="onPageScroll"> 
+    <view wx:for="{{listMain}}" wx:for-item="group" wx:key="{{group.id}}"  id="{{ 'inToView'+group.id}}" data-id='{{group.id}}'> 
+      <!-- <view class="address_top" >{{group.region}}</view>  -->
+        <view class='name_wrapper' data-info="{{item}}" wx:for="{{group.brands}}" wx:for-item="item" wx:key="{{index}}" bindtap='showReport'> 
+          <view class='name_title {{index==0?"index-bg":"index-margin"}}' wx:if="{{index==0}}">{{group.region}}</view>
+          <view class="address_bottom {{index==0?'':'index-margin'}}"  data-id='{{item.brandId}}'>{{item.student_name}}</view> 
+        </view> 
+    </view> 
+  </scroll-view> 
+  <!-- 顶部固定分类 -->
+  <!-- <view class="list-fixed {{fixedTitle=='' ? 'hide':''}}" style="transform:translate3d(0,{{fixedTop}}px,0);">
+    <view class="fixed-title">
+    {{fixedTitle}}
+    </view>
+  </view> -->
+  <!-- 右侧字母导航 -->
+  <view class="orientation_region"> 
+    <view class="orientation">#</view> 
+      <block wx:for="{{listMain}}"  wx:key="{{item.id}}"> 
+
+        <view class="orientation_city  {{isActive==item.id ? 'active':'' }}" bindtap="scrollToViewFn" data-id="{{item.id}}" >
+        {{item.region}}
+        </view> 
+    </block> 
+  </view>  
+</view>
+
+<!-- <student-list /> -->

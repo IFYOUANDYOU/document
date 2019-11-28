@@ -1,0 +1,19 @@
+<view class="container">
+    <view class="pdf-list">
+        <picker bindchange="bindPdfChange" value="{{pdfIndex}}" range="{{pdflist}}" range-key="name">
+            <view class="picker">{{pdflist[pdfIndex].name}}</view>
+        </picker>
+    </view>
+    <view class="pdf-view">
+    <web-view src="https://xxy-files-develop.oss-cn-shenzhen.aliyuncs.com/yy_error_dev/pdf/2019090614373548213/%E5%85%83%E9%98%85%E5%AE%9E%E9%AA%8C%E4%B8%AD%E5%AD%A6/%E9%AB%98%E4%B8%AD2018%E7%BA%A7/22/%E4%BD%99%E6%80%9D.pdf"></web-view>
+        <block wx:for='{{previewImg}}' wx:key='{{index}}'>
+            <view class="pdf_item {{'zindex'+item.zIndex}} {{index == previewIndex ? 'active' : index == previewIndex - 1 ? 'last' : ''}} {{item.isturn?previewDir : ''}}" data-index='{{index}}' bindtouchstart="previewTouchstart" bindtouchmove="previewTouchmove" bindtouchend="previewTouchend">
+                <image src='{{item.src}}' mode='aspectFill'></image>
+            </view>
+        </block>
+    </view>
+    <view wx:if="{{guide}}" class="guide">
+        <image class="guide-icon" mode="widthFix" src="/image/wrongs/left-icon.png" alt="左滑" title="左滑"></image>
+        <image class="guide-icon" mode="widthFix" src="/image/wrongs/right-icon.png" alt="右滑" title="右滑"></image>
+    </view>
+</view>

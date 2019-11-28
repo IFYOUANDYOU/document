@@ -1,0 +1,94 @@
+
+/* 班级学生 报告列表 */
+.scroll-reports {
+    padding-bottom: 20rpx;
+    box-sizing: border-box;
+    height: calc(100%);
+    position: fixed
+}
+
+.address_top {
+    height: 56rpx;
+    line-height: 56rpx;
+    background: #EBEBEB;
+    color: #999999;
+    font-size: 28rpx;
+    padding: 0 20rpx;
+}
+
+.scroll-reports .name_wrapper {
+    margin-left: 113rpx;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.group-item{
+    position: relative;
+    min-height: 98rpx;
+}
+
+.scroll-reports .group_title {
+    width: 54rpx;
+    height: 56rpx;
+    left: 32rpx;
+    position: absolute;
+    top: 21rpx;
+    text-align: center;
+    line-height: 54rpx;
+    color: #565E66;
+    font-weight: 500;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAA4CAYAAAC2TwutAAADUklEQVRoQ+2aS2gTURSG/zNJ03b6mDRNQwm6UFdqRRQVXyBd6qq4ERdFRUEX4k5bEUupiG3diQsFxSKCrqQrXRbBFy0oYqErdaGEklfz6rSNyRyZoCUd+phkkul0nNnmnP/835wb5s6dQ6jSFYlEmlAjnmLgBAF7AQT/lgox8ImAVyyJLwJEmWpYoEqL/piZ8TZQbY8AvsSAdzV9AhIK6MEsLwxtaWlJVNJLxcAmmT2B1NxFAt8Eo60kk4QIK3Qr7K1/2EGULSl3hWDDYMwsRFOzp8HCAMBbDZr6DuI+f3PDcyJSjGgZAosn54/nlNwdItptxIQ2l5m/uAX3dZ9U97pc3bLApmPyQZegDILoWLmFdeUxv8krQm97q/hRV3xRUElgoWh6u9sl3CZCF4CScks1VhTPzBjN5ZUbQX/TlF4dXeZisrxJyXI/EZ1hZrde8QrH5QGMCB7qbxXFX2tprwr2M5n01XFNL8CXAdSvJWbS73MA3Z+n34ObJSm+Us1lwUKhkOgRvVcYSg9Aqz6LTIJZpgwnCMJQVk7cCwaDsjZgCdjY2Ji7Y8+B82D0gRZ3CuvnXU9lRgiEgcnP4487Oztz/1IWwcLhTDs89JKAQ3r0rBbDwAdk+WQg0DiteiuAqdugRsHzHoztVjNckh/CVEbJHla3ZwWwyEzmKYi6SxKxajDTs7YWsZti6YWdSj731cTnUrVvCQsu9y6KJORhgK9Wu5q5+nSXIonZCQD7zC1c5WqECRVMfQ+SqlzKZHlOqmDq64GurZXJ7oyUYxWMjShYNdcBs2pnVtwEO0txg7XM+Y9tsIbB6ZjTMYvcAWcpWqQRum04HdN9qywS6HTMIo3QbcPpmO5bZZFAOx8NZBIA2fIwZxzAfousoErZUI/f5CGAr1VK0Ro6NEyxWHqH4hLUI27BGqYMu1AKR9yqTDiZeUJMZw1LWkCACCN+qeFcAexbPC41CbVvCeiwgLeyLTAwmVYWjm7z+ZKLJ8CpFPvn8/IoEY6UrbyOicx4V+cSu5qbKaraWHK0zcyuaFK+sBE/1fol8RERqZMFhev/+LiuXUm2G4fQAtpugEULaLuRIy2g7YbEtIC2G+srBrTlIGYxoO1GZ7XL03bDzlrA9R5P/wPM3b3hepBYXwAAAABJRU5ErkJggg==) no-repeat;
+    background-size: 54rpx 56rpx;
+}
+
+.scroll-reports .student_name {
+    height: 88rpx;
+    flex: 1;
+    line-height: 88rpx;
+    background: #fff;
+    color: #1D2023;
+    font-size: 34rpx;
+    padding: 5rpx;
+}
+.scroll-reports .has-list:active{
+    color: #5CB3FF;
+}
+.scroll-reports .student_name.no{
+    color: #C4C8CC;
+}
+
+/* 右侧字母导航 */
+.orientation_region {
+    padding: 5px 0px;
+    width: 45rpx;
+    font-size: 20rpx;
+    position: fixed;
+    top: 50%;
+    right: 6rpx;
+    transform: translate(0, -50%);
+    border-radius: 10px;
+}
+
+.orientation {
+    white-space: normal;
+    display: inline-block;
+    width: 45rpx;
+    height: 50rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    color: rgb(88, 87, 87);
+    text-align: center;
+}
+
+.orientation_mark {
+    height: 40rpx;
+    line-height: 40rpx;
+    color: #1D2023;
+    text-align: center;
+}
+
+.orientation_mark.active {
+    color: #5CB3FF;
+}

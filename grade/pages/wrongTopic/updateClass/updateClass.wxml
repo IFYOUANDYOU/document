@@ -1,0 +1,30 @@
+<view class="container">
+    <view class="page-title">
+        请选择您要调整的班级
+        <view class="tag" data-status="true" bindtap="unifyModule">
+            <image class="adjust-icon" src="/image/wrongs/edit-icon-blue.png" title="调整" />
+            统一调整
+        </view>
+    </view>
+    <view class="classList">
+        <view wx:if="{{classList.length == 0}}" class="empty">没有班级</view>
+        <block wx:for="{{classList}}" wx:key="{{item.id}}">
+            <view class="class-item">
+                {{item.grade + item.className}}
+                <view class="action">
+                    <image class="preview-icon" src="/image/wrongs/preview-icon.png" title="预览" />
+                    预览
+                </view>
+            </view>
+        </block>
+    </view>
+    <view wx:if="{{popule}}" class="popule">
+        <view class="popule-contain">
+            <view class="title">统一调整后所有班级将使用一个 错题集模版，确定要调整吗？</view>
+            <view class="btns">
+                <view class="btn cancel" data-status="false" bindtap="unifyModule">取消</view>
+                <view class="btn confirm">确定</view>
+            </view>
+        </view>
+    </view>
+</view>

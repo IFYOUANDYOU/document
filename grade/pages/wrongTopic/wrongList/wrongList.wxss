@@ -1,0 +1,280 @@
+page,
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    box-sizing: border-box;
+    overflow: hidden;
+    font-size: 28rpx;
+}
+.container::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #818D99;
+    height: 232rpx;
+    z-index: -1;
+}
+
+/* 顶部考试信息总结 */
+.page-header {
+    box-sizing: border-box;
+    margin: 30rpx 30rpx 0;
+    padding: 36rpx 38rpx 0;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 16rpx 16rpx 0 0;
+    color: #565E66;
+    line-height: 42rpx;
+    position: relative;
+    height: 180rpx;
+}
+
+.page-header .exam-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #1D2023;
+}
+
+.page-header .student-name {
+    margin-top: 10rpx;
+    color: #818D99;
+}
+
+.page-summary {
+    margin-top: -2rpx;
+    height: 174rpx;
+    border-radius: 24rpx 24rpx 0px 0px;
+    padding: 12rpx 68rpx 28rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    line-height: 48rpx;
+}
+.page-summary .left{
+    flex: 1;
+}
+.page-summary .number text{
+    color: #5CB3FF;
+}
+
+.page-summary .right{
+    position: relative;
+    background: #E7F4FF;
+}
+
+.page-summary .right,.scoreCanvas{
+    width: 174rpx;
+    height: 174rpx; 
+    border-radius: 174rpx;
+}
+
+.scoreCanvas,.scoreText{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.scoreText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    left: 24rpx;
+    right: 24rpx;
+    top: 24rpx;
+    bottom: 24rpx;
+    border-radius: 174rpx;
+    background: #fff;
+    font-size: 44rpx;
+    font-family: DINOT;
+    font-weight: bold;
+    font-style: italic;
+    color: rgba(92,179,255,1);
+    line-height: 34rpx;
+}
+.scoreText text{
+    display: block;
+    font-size: 20rpx;
+    font-family: Yuanti SC;
+    font-weight: 400;
+    color: rgba(129,141,153,1);
+}
+
+.content{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 420rpx;
+    bottom: 0;
+    padding: 0 30rpx 30rpx;
+}
+
+/* 错题集数量为空 */
+.empty-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 34rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: rgba(129, 141, 153, 1);
+}
+
+.empty-info image {
+    width: 238rpx;
+    height: 277rpx;
+    margin-bottom: 38rpx;
+}
+
+/* 错题集列表 */
+.wronglist-view{
+    position: absolute;
+    top: 0;
+    left: 30rpx;
+    right: 30rpx;
+    bottom: 30rpx;
+    overflow: scroll;
+    width: auto;
+    font-size: 28rpx;
+    font-family: PingFang SC;
+    font-weight: 500;
+}
+.topic-num .icon::before,.title-tag::before,.similar-tt::before{
+    content: '';
+    display: block;
+    float: left;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+.topic-num{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 54rpx;
+    font-size: 34rpx;
+    padding: 20rpx 0;
+}
+.topic-num .icon::before{
+    width: 40rpx;
+    height: 54rpx;
+    margin-left: 18rpx;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAARCAYAAADtyJ2fAAABEklEQVQ4T53TsUrDQBwG8O8fM3TQF4kdtErJnXbIS/gYGlyKzopUQR9B8AGU6iKOWrCU6K5D61DppoOFaKP3SRClYNKkufH+3487uO+k1enM01gnIB2BnNryWXddt4+MJTe3wZ0IKmO5IYHdwWzpcK1cHqV5abUDA0ASAo80ZqOmq5dJOIacfCs2Z2j7Si0+jedywDjOUMRqyNfHvtY6jHdywp+zCPSElr+qKudTwb+rGrNdDJIvxSDwWggS2JoKEuyC9GuqepETMgRkLwrfDjzPe8/3HIKzyESbnlL/CpBcOcGDEOsr7vJVWuUCAEu/QxJDADuDudLRxJJft+8dgTkWiAOyadGua73wnPmtsgJp829sB4U3R5I92AAAAABJRU5ErkJggg==);
+    background-size: 14rpx auto;
+}
+.topic-num.active .icon::before{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAOCAYAAAAmL5yKAAABQklEQVQ4T53TvUrDUBQH8P9JqrWK4BOIDg7aIBRCSEszZKxDxc3Bp3CzS0UQBR9D0LUiiqtNzAdpu4iKFMQXcBC1lBZzJAWl0bQk3vGec36ce8+9VHdaKyL8YwZyAAjxFgNoCSlskWk3WqBBcfLF7JFhN7pESCevBhj4IMNpnhJ48z8AGCdkGI15msADgOlkCL2n0F8eXJrpNitg3k8CMLCjqfLhALhst9OzL6+3BCzFQgiPczNTq5Ik9X7GZjreGkAXcQD2/ZJWUK6C3NDcTad5BnB5HMJATVPlje+cEHDtuosii3cAMlEIAZ0ei1k9n3uOBIJNw/Z2iag6ootqUZX3hmN/nq5lWRlfmLwHsBBCCE/9zltW1/XuWCAI3jjeOoNqw4nMflnLK+e/Oxv5eeq2VxGItgES4H8eFQvKQdSxvgDuRmVw6StpVwAAAABJRU5ErkJggg==);
+    background-size: 16rpx auto;
+}
+.topic-num .num-tag{
+    font-size: 24rpx;
+    color: rgba(196,200,204,1);
+    
+}
+/*  */
+.topic-info{
+    margin-left: 56rpx;
+    color: #818D99;
+}
+
+/*  */
+.topic-info .title-tag{
+    line-height: 32rpx;
+}
+.topic-info .title-tag::before{
+    content: '';
+    display: block;
+    width: 13rpx;
+    height: 32rpx;
+    background-size: 4rpx auto;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAWCAYAAADn7z3uAAAAQklEQVQoU2OM2fLfj+E/w0wGEGBkSGeM2fz/OQMDgwRYgIHhBUjgP5QDUTQqQDg8UIMwatN/fyZGhhmg4Pv3nyEDALtoSKKRF9jiAAAAAElFTkSuQmCC);
+}
+
+/* 题目 */
+.topic-title{
+    margin-top: 60rpx;
+}
+.topic-info image{
+    width: 100%;
+    height: auto;
+}
+
+.topic-info .title-info{
+    border-radius: 10rpx;
+    background: #E5E5E5;
+    border: 2rpx solid #E5E5E5;
+    margin-top: 24rpx;
+}
+/* 得分总结 */
+.topic-score{
+    margin-top: 32rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.topic-score text{
+    color: #5CB3FF;
+}
+/* 知识点 */
+.topic-knowledge{
+    margin-top: 48rpx;
+}
+.topic-knowledge text{
+    color: #1D2023;
+}
+/* 参考答案 解析 */
+.topic-answer,.topic-parse,.topic-similar{
+    margin-top: 60rpx;
+}
+.topic-answer .answer-info,.topic-parse .parse-info{
+    margin-top: 24rpx;
+    color: #1D2023;
+    font-size: 32rpx;
+}
+/* 相似题 */
+.topic-similar .title-tag{
+    font-size: 24rpx;
+}
+.topic-similar .title-tag::before{
+    display: none;
+}
+.topic-similar .similar-tt{
+    padding: 25rpx 0;
+    line-height: 48rpx;
+    border-bottom: 1px solid rgba(215,220,224,1);
+    color: #5CB3FF;
+}
+.topic-similar .similar-tt::before{
+    width: 44rpx;
+    height: 48rpx;
+    margin-left: 18rpx;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAUCAYAAABbLMdoAAAA+0lEQVQ4T43SzWrCQBSG4e/EJMVCu1HvopKVEphV4qaLXrKpOARMdFAo2N5C2xtoSZOMZEJt8zOjswzPe+YMhOJktwbRvS1vHn1/+gHDoTgRGwA+QK823NAU0EqIsZNjCcCrgp+vYhEE8/e+C6j6eG2g8LXBGatgJcb2EEsCPAm85VYZBvO/lRr4UtDBpqAXV0GapqNMDqL/K2lxT/BixJzzieXeRgCmIBy0mPP9xHLLGgLHb+SLXtyGVDghY95nB+tg9YYGNsEGvgTPWEGnfAbhAZBHKly1Y/vPoy7MQsZYB6rJ8Wa3BdGsnqiHNU5EBCnvqMyedBN/1zkB+gmmMvI5DTgAAAAASUVORK5CYII=);
+    background-size: 11rpx auto;
+}
+.topic-similar .similar-tt.active::before{
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAABNUlEQVQ4T53TTUvDMBgH8P+TtRV3H9tXcPiCMOigp74cvPhtvQxcJ0WhqzIsrh9C0ZMH1y1NJIFJ17WVLbeE5Mf/eZLQ0/z5QUo62Ri4dUejTxwxomjR61jiDlJ+0+P8ZQGJa4DSjSGDQ1GFMVOEIJwTkFAcx30OIwQwPBQtYyAshck8UhXG8VufYx0Ccggg3Rj4N6nGLDEFcEGEJXjuO47zocEqKoGU/yBw3fqeljFAZlSsPYUp5w9Uk9ksGZinnalKqlCLCt+27a/yPUVR1GNWVyerYnugRpNkYAgWEnBWRXcxZFSYnuNc6WTbsZNwu1hGAbyaVAR5njNmde8BXAL1WG3CJhQA0xghI76frDVhA6o6nq0k94Px+L3p/deWXN6syy/YhEiKFYqbNqy15CN+oD7yC7aSorX1YW4RAAAAAElFTkSuQmCC);
+    background-size: 20rpx auto;
+}
+.topic-similar .similar-title{
+
+}
+.topic-similar .topic-info{
+    margin-left: 0;
+}
+
+/*  */

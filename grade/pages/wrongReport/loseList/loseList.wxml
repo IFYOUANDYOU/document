@@ -1,0 +1,46 @@
+<view class="container">
+  <view class='top-info'>
+    <view class='title'><view></view>{{lostData.title}}</view>
+    <view class='wrapper'>
+      <view class='item'>
+        <view>知识点总分</view>
+        <view>{{lostData.fullMark}}</view>
+      </view>
+      <view class='item'>
+        <view>丢分率</view>
+        <view>{{lostData.loseCenRate}}%</view>
+      </view>
+      <view class='item'>
+        <view>平均丢分</view>
+        <view>{{lostData.avg}}</view>
+      </view>
+      <view class='item'>
+        <view>丢分人数</view>
+        <view>{{studentData.length}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class='content'>
+    <view class='header'>
+      <view>学生姓名</view>
+      <view>知识点得分</view>
+      <view  bindtap='sortList'>知识点丢分
+        <view class='option'>
+          <image  mode="scaleToFill"  src="/image/cuotiji/top.png" wx:if="{{index==1}}"></image>
+          <image  mode="scaleToFill"  src="/image/cuotiji/top_active.png"  wx:if="{{index==2}}"></image>
+          <image  mode="scaleToFill"  src="/image/cuotiji/down.png"  wx:if="{{index==2}}"></image>
+          <image  wx:if="{{index==1}}"  mode="scaleToFill"  src="/image/cuotiji/down_active.png"></image>
+        </view>
+      </view>
+    </view>
+
+    <view class='student-wrapper'>
+      <view class='item' wx:for="{{studentData}}" wx:key="{{index}}">
+        <view><text>{{index+1}}</text>{{item.name}}</view>
+        <view>{{item.knowledgeScore}}</view>
+        <view>{{item.knowledgeLoseCent}}</view>
+      </view>
+    </view>
+  </view>
+</view>

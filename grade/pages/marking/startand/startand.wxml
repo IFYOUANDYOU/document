@@ -1,0 +1,6 @@
+<view class="startand">
+    <view wx:if="{{startandImg}}" class="startandImg">
+        <image src="{{startandImg}}" mode="aspectFit" style="width: {{staticImg.width}}rpx; height: {{staticImg.height}}rpx; left: {{left}}rpx; top: {{top}}rpx; transform: scale({{ scale }}) rotate({{rotate}}deg)" bindload="loadAnswer" catchtouchstart="touchstart" catchtouchmove="touchmove" catchtouchend="touchend" />
+    </view>
+    <view wx:if="{{startandText}}" class="startandText">正确答案：{{startandText}}</view>
+</view>

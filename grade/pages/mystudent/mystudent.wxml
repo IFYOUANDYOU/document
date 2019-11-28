@@ -1,0 +1,24 @@
+<!--pages/parent/parent.wxml-->
+<view class='container'>
+  <view class='head' wx:for="{{classList}}" wx:key="{{index}}">
+    <view class="school_name">{{index}}</view>
+    <view class='search' wx:for="{{item}}" wx:key="{{index}}">
+      <view class="class_name" bindtap="getStudent" data-classid="{{item.classId}}" data-stunum="{{item.stuNum}}">{{item.class}} <image class="toggle" src='../../image/bottom.png' mode="aspectFit" style="transform: rotate({{item.toggle?180:0}}deg)"></image></view>
+      <view class='list' wx:if="{{item.studentList.length && item.toggle}}">
+        <view class='tr' wx:for="{{item.studentList}}" wx:key="{{index}}">
+          <view class='num'>{{index + 1}}</view>
+          <view class='name'>{{item.student_name}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='editBtn' bindtap='goEdit'>
+      <image src='../../image/student_edit.png'></image>
+    </view> -->
+  </view>
+  <view class='list'>
+    <view class='tr' wx:for="{{studentList}}" wx:key="{{index}}">
+      <view class='num'>{{index+1}}</view>
+      <view class='name'>{{item.student_name}}</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,4 @@
+<!--Componet/handWrite/handWrite.wxml-->
+<canvas canvas-id="lineCanvas" class="lineCanvas" disable-scroll="false" bindtouchstart="canvasTouchStart" bindtouchmove="canvasTouchMove" bindtouchend="canvasTouchEnd" bindtouchcancel="canvasTouchCancel"
+  binderror="canvasTouchError" bindlongtap="canvasTouchLongtap">
+</canvas>

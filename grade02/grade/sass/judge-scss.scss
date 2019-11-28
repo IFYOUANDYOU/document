@@ -1,0 +1,199 @@
+@function tovmin($rpx) {
+    @return #{$rpx * 100 / 750}vmin;
+}
+
+@mixin displayflex($x, $y) {
+    display: flex;
+    justify-content: $x;
+    align-items: $y;
+}
+
+@mixin setpos($t, $x, $y) {
+    position: $t;
+    left: tovmin($x);
+    top: tovmin($y);
+}
+
+@mixin setarea($w, $h) {
+    width: tovmin($w);
+    height: tovmin($h);
+}
+
+.wrapper-son {
+    // height: tovmin(100);
+    position: absolute;
+    bottom: 0;
+    top: 64px;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    
+    
+    .t_title {
+        font-size: tovmin(34);
+        color: #fff;
+        @include setarea(260, 80);
+        border-radius: 0rpx tovmin(40) tovmin(40) 0rpx;
+        background-color: #565E66;
+        line-height: tovmin(80);
+        text-align: center;
+        //@include setpos(absolute, 0, 186)
+    }
+
+    .pics {
+        width: auto;
+        height: auto;
+        
+        @include displayflex(center, center);
+    }
+
+    .actions {
+        width: auto;
+        height: auto;
+        bottom: tovmin(24);
+        @include displayflex(center, center);
+        color: #fff;
+
+        .btn {
+            width: 50%;
+            height: tovmin(104);
+            @include displayflex(center, center);
+
+            &:first-child {
+                background-color: #FF6047;
+                border-radius: tovmin(52) 0rpx 0rpx tovmin(52);
+            }
+
+            &:last-child {
+                background-color: #24C789;
+                border-radius: 0rpx tovmin(52) tovmin(52) 0rpx;
+            }
+
+            image {
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+
+            .icon_1 {
+                @include setarea(46, 45);
+            }
+
+            .icon_2 {
+                @include setarea(57, 41);
+            }
+        }
+        .b_btn{
+            &:first-child {
+                background-color: #565E66;
+            }
+
+            &:last-child {
+                background: linear-gradient(90deg,rgba(255,160,51,1) 0%,rgba(255,203,82,1) 100%);
+            }
+            .icon_1 {
+                @include setarea(12, 26);
+                margin-right: tovmin(29);
+            }
+
+            .icon_2 {
+                @include setarea(12, 30);
+                margin-left: tovmin(29);
+            }
+          }
+          .b-tit{
+              font-size: tovmin(34);
+              color: #fff;
+          }
+    }
+
+    .magnifier {
+        @include setarea(112, 112);
+        position: absolute;
+        right: tovmin(28);
+        bottom: tovmin(164);
+
+        image {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    }
+}
+
+@media all and (orientation : portrait) {
+    //竖屏下的页面样式
+    .wrapper-son{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: tovmin(120);
+        
+        .pics{
+            flex: 1;
+        }
+        .actions{
+            margin: 0 tovmin(32) tovmin(24);
+        }
+    }
+}
+
+@media all and (orientation : landscape) {
+    .wrapper-son{
+        width: auto;
+        height: auto;
+        top: tovmin(96);
+        left: 0;
+        right: 0;
+        box-sizing: border-box;
+        bottom: 0;
+        margin-top: 20px;
+        .t_title{
+            margin-top: tovmin(18);
+        }
+        .pics,.actions{
+            position: absolute;
+        }
+        .pics{
+            width: auto;
+            height: 100%;
+            transform: none;
+            top: tovmin(24);
+            left: tovmin(24);
+            bottom: tovmin(24);
+            right: tovmin(172);
+        }
+        .judgeBtn{
+            width: tovmin(104);
+            height: auto;
+            flex-direction: column;
+            right: tovmin(64);
+            left: auto;
+            top: 0;
+            bottom: tovmin(16);
+            color: #fff;
+            .btn{
+                width: 100%;
+                height: 50%;
+                
+                &:first-child {
+                    border-radius: tovmin(52) tovmin(52) 0rpx 0rpx;
+                }
+    
+                &:last-child {
+                    border-radius: 0rpx 0rpx tovmin(52) tovmin(52);
+                }
+            }
+        }
+        .completeBtn{
+            left: tovmin(64);
+            right: tovmin(64);
+        }
+        .magnifier{
+            @include setarea(96, 96);
+            right: tovmin(256);
+            bottom: auto;
+            top: tovmin(18);
+        }
+    }
+}

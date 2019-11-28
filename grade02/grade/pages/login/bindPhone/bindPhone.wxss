@@ -1,0 +1,113 @@
+/* pages/login/bindPhone/bindPhone.wxss */
+@import '../../../plugins/animate/animate.wxss';
+.wrapper {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left:0;
+  z-index: 999999;
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 48rpx 64rpx 0 65rpx;
+}
+.wrapper .close{
+  width: 33rpx;
+  height: 32rpx;
+  float: right;
+}
+.wrapper .submit {
+  margin-top: 120rpx;
+  width:622rpx;
+  height:104rpx;
+  line-height:104rpx;
+  color: #FEFEFE;
+  font-size: 34rpx;
+  letter-spacing: 15rpx;
+  text-align: center;
+  background:linear-gradient(90deg,rgba(255,160,51,1) 0%,rgba(255,203,82,1) 100%);
+  border-radius:52rpx;
+}
+.wrapper .title{
+  margin-top: 80rpx;
+  margin-bottom: 31rpx;
+  color: #1D2023;
+  font-size: 48rpx;
+  font-weight: bold;
+}
+.wrapper .info{
+  color: #818D99;
+  font-size: 28rpx;
+  margin-bottom: 85rpx;
+}
+.wrapper .warn{
+  color: #C4C8CC;
+  font-size: 24rpx;
+  margin-bottom: -60rpx;
+}
+.input-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 60rpx 0 31rpx;
+  align-items: center;
+  font-size: 34rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(215,220,224,1);
+}
+.input-wrapper .get-code{
+  color: #FFAA00;
+  font-size: 28rpx;
+}
+.input-wrapper input{
+  
+}
+.input-wrapper image{
+  width: 32rpx;
+  height: 32rpx;
+}
+.show {
+  display: inline-block;
+}
+.hide {
+  display: none;
+}
+
+.isFocus {
+  border-bottom: 1px solid #fff;
+  
+}
+.isFocus::before {
+  content: '';
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background:linear-gradient(90deg,rgba(255,160,51,1) 0%,rgba(255,203,82,1) 100%);
+}
+.school-wrapper {
+  position: absolute;
+  left: 0;
+  bottom: 88rpx;
+  z-index: 9999;
+  color: #1D2023;
+  font-size: 34rpx;
+  width: 100%;
+  max-height: 400rpx;
+  overflow: scroll;
+  background: #fff;
+  box-shadow:0rpx -4rpx 32rpx 0rpx rgba(29,32,35,0.08);
+  border-radius:16rpx 16rpx 0rpx 0rpx;
+}
+.school-wrapper .content{
+  height: 100%;
+  width: 100%;
+  background: #fff;
+}
+.school-wrapper .item{
+  padding: 29rpx 0 27rpx;
+  background-color: #fff;
+  padding-left: 33rpx;
+  border-bottom: 1px solid #EBF0F5;
+}

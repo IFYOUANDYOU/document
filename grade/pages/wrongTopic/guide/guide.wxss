@@ -1,0 +1,55 @@
+page,.container{
+  height: 100%;
+  background: #EBF0F5;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 48rpx 32rpx 32rpx;
+  box-sizing: border-box;
+}
+.title,.guide,.actions{
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.title{
+  color: #1D2023;
+  font-size: 32rpx;
+  text-align: left;
+}
+
+.guide{
+  flex: 1;
+  
+  padding: 50rpx 65rpx 70rpx;
+}
+.guide image{
+  width: 100%;
+  height: auto;
+  box-shadow: 0px 10rpx 25rpx 0px rgba(86, 94, 102, 0.15);
+}
+
+.actions{
+  /* position: absolute;
+  left: 0;
+  right: 0; */
+}
+.actions .btn{
+  width: 422rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  margin: 0 auto;
+  border-radius: 16rpx;
+  text-align: center;
+  font-size: 34rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  color: #565E66;
+}
+.actions .begin{
+  background: linear-gradient(90deg,rgba(255,160,51,1) 0%,rgba(255,203,82,1) 100%);
+  color: #fff;
+}

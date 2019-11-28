@@ -1,0 +1,35 @@
+<view class="outer-wrapper">
+  <view class="title">补全信息</view>
+  <view class="container">
+    <view class="item">
+      <view class="label">用户类型</view>
+      <view class="radio-wrapper">
+        <view class="radio" data-info="1" bindtap="changeRadio">
+          <image style="width: 40rpx;height: 40rpx;" src="{{type==1?'/image/login/checked.png':'/image/login/check_normal.png'}}" mode="aspectFit" />
+          <view>学校用户</view>
+        </view>
+         <view class="radio"  data-info="2" bindtap="changeRadio">
+          <image style="width: 40rpx;height: 40rpx;" src="{{type==2?'/image/login/checked.png':'/image/login/check_normal.png'}}" mode="aspectFit" />
+          <view>个人用户</view>
+        </view>
+      </view>
+    </view>
+    <view class="item">
+      <view class="label">姓名昵称</view>
+      <input maxlength="10" value="{{name}}" bindinput="bindKeyInput" placeholder="请输入姓名昵称" />
+    </view>
+    <view class="item" wx:if="{{type==1}}">
+      <view class="label">学校名称</view>
+      <view class="section">
+        <picker onChange="bindPickerChange" value="{{index}}" range="{{listData}}" range-key="school_name">
+          <view class="picker">
+            {{listData[index].school_name}}
+            <image  style="width: 24rpx;"  src="/image/login/down.png" mode="aspectFit" />
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="btn" bindtap="bindInfo">确定</view>
+  </view>
+</view>

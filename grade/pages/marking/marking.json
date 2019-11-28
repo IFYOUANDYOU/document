@@ -1,0 +1,13 @@
+{
+  "disableScroll": true,
+  "disableSwipeBack": true,
+  "pageOrientation": "auto",
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "judge-comment": "../judge/judge",
+    "startand": "./startand/startand",
+    "signature": "./signature/signature",
+    "score-btn": "./scoreBtn/scoreBtn"
+  }
+}

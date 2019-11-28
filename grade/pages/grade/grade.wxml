@@ -1,0 +1,76 @@
+<view class="wrapper">
+  <view class="nav">
+    <view class='title'>{{examName}}</view>
+    <view class='menus' bindtap='openModel'>···</view>
+  </view>
+
+  
+  
+   <view class="tablelist">
+    <view class="thead">
+      <view class="td">题号</view>
+      <view class="td">已评/总量</view>
+      <view class="td" style="text-align:right">操作</view>
+    </view>
+    <block wx:if="{{loadstatus}}">
+      <view class="loadtext" style='display:flex;justify-content:center;'>
+        <div class="load"></div>
+        <div class="load"></div>
+        <div class="load"></div>
+        <div class="load"></div>
+        <div class="load"></div>
+      </view>
+    </block>
+    <view class="scroll_view" hidden="{{loadstatus}}">
+      <view  class="tbody" wx:for="{{examInfo}}" wx:for-index="key" wx:for-item="item" wx:key="{{index}}">
+        <view class="td">{{item.questionStrlevel}}</view>
+        <view class="td td_pro">
+          <view class='score'>{{item.checkAll}}/{{item.markAll}}</view>
+          <view class='progress'>
+            <view class='progressBar' style="width:{{(item.checkAll/item.markAll)*100}}%;"></view>
+          </view>
+        </view>
+        <view class="td " data-type="{{item.questionId}}" data-back="{{item.checkAll == item.markAll}}" data-total="{{item.markAll}}" bindtap="goMarking">
+          <view class="bt {{item.checkAll == item.markAll ?'complete':'uncomplete'}}">
+            {{item.checkAll == item.markAll ?'回评':'评卷'}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="no_data" wx:if="{{no_data && !loadstatus}}">没有考试数据！</view>
+  </view>
+  <view class="btn {{!postResult?'model':''}}" bindtap="postRessult">
+    统计分数
+  </view>
+  <view class='propmodel' bindtap='closeModel' wx:if="{{propmodel}}">
+    <view class='box' catchtap='close'>
+      <view class='options' catchtap='menusHandle' data-type="1">
+        <view class='icons'>
+          <image src='../../image/icon_3.png'></image>
+        </view>
+        <view class='b_tit'>返回考试首页</view>
+      </view>
+      <view class='options' catchtap='menusHandle' data-type="2">
+        <view class='icons'>
+          <image src='../../image/icon_1.png'></image>
+        </view>
+        <view class='b_tit'>补扫试卷</view>
+      </view>
+      <view class='options' catchtap='menusHandle' data-type="3">
+        <view class='icons'>
+          <image src='../../image/icon_2.png'></image>
+        </view>
+        <view class='b_tit'>修改识别结果</view>
+      </view>
+      <view class='options contact'>
+        <view class='icons'>
+          <image src='/image/headset.png'></image>
+        </view>
+        <view class='b_tit' style='position:relative;'>
+          <button open-type="contact">联系客服</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- <footer/> -->
+</view>

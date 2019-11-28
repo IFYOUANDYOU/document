@@ -1,0 +1,197 @@
+.wrapper-son {
+  position: absolute;
+  bottom: 0;
+  top: 64px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.wrapper-son .t_title {
+  font-size: 4.53333vmin;
+  color: #fff;
+  width: 34.66667vmin;
+  height: 10.66667vmin;
+  border-radius: 0rpx 5.33333vmin 5.33333vmin 0rpx;
+  background-color: #565E66;
+  line-height: 10.66667vmin;
+  text-align: center;
+}
+
+.wrapper-son .pics {
+  width: auto;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper-son .actions {
+  width: auto;
+  height: auto;
+  bottom: 3.2vmin;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper-son .actions .btn {
+  width: 50%;
+  height: 13.86667vmin;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+          color: #fff;
+}
+
+.wrapper-son .actions .btn:first-child {
+  background-color: #FF6047;
+  border-radius: 6.93333vmin 0rpx 0rpx 6.93333vmin;
+}
+
+.wrapper-son .actions .btn:last-child {
+  background-color: #24C789;
+  border-radius: 0rpx 6.93333vmin 6.93333vmin 0rpx;
+}
+
+.wrapper-son .actions .b-tit {
+  font-size: 4.53333vmin;
+  color: #fff;
+}
+
+.wrapper-son .actions .btn .icon_1 {
+  width: 6.13333vmin;
+  height: 6vmin;
+}
+
+.wrapper-son .actions .btn .icon_2 {
+  width: 7.6vmin;
+  height: 5.46667vmin;
+}
+
+.wrapper-son .actions .btn image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.wrapper-son .actions .b_btn:first-child {
+  background-color: #565E66;
+}
+
+.wrapper-son .actions .b_btn:last-child {
+  background: linear-gradient(90deg, #ffa033 0%, #ffcb52 100%);
+}
+
+.wrapper-son .actions .b_btn .icon_1 {
+  width: 1.6vmin;
+  height: 3.46667vmin;
+  margin-right: 3.86667vmin;
+}
+
+.wrapper-son .actions .b_btn .icon_2 {
+  width: 1.6vmin;
+  height: 4vmin;
+  margin-left: 3.86667vmin;
+}
+
+@media all and (orientation: portrait) {
+  .wrapper-son {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-top: 16vmin;
+  }
+  .wrapper-son .pics {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  .wrapper-son .actions {
+    margin: 0 4.26667vmin 3.2vmin;
+  }
+}
+
+@media all and (orientation: landscape) {
+  .wrapper-son {
+    width: auto;
+    height: auto;
+    top: 12.8vmin;
+    left: 0;
+    right: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    bottom: 0;
+    margin-top: 20px;
+  }
+
+  .wrapper-son .t_title {
+    margin-top: 2.4vmin;
+  }
+  
+  .wrapper-son .pics, .wrapper-son .actions {
+    position: absolute;
+  }
+  .wrapper-son .pics {
+    width: auto;
+    height: auto;
+    -webkit-transform: none;
+    transform: none;
+    top: 3.2vmin;
+    left: 3.2vmin;
+    bottom: 3.2vmin;
+    right: 22.93333vmin;
+  }
+  .wrapper-son .judgeBtn {
+    width: 13.86667vmin;
+    height: auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    right: 8.53333vmin;
+    left: auto;
+    top: 0;
+    bottom: 2.13333vmin;
+    color: #fff;
+  }
+  .wrapper-son .judgeBtn .btn {
+    width: 100%;
+    height: 50%;
+  }
+  .wrapper-son .judgeBtn .btn:first-child {
+    border-radius: 6.93333vmin 6.93333vmin 0rpx 0rpx;
+  }
+  .wrapper-son .judgeBtn .btn:last-child {
+    border-radius: 0rpx 0rpx 6.93333vmin 6.93333vmin;
+  }
+  .wrapper-son .completeBtn {
+    left: 8.53333vmin;
+    right: 8.53333vmin;
+  }
+}

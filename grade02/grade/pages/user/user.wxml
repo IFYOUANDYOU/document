@@ -1,0 +1,66 @@
+<!--pages/user/user.wxml-->
+<view class='container' wx:if="{{type==3&&showContent}}">
+  <view class='header'> 
+    <view class='info'>
+      <view class='name'>
+        <view class='text' wx:if="{{!editStatus}}">{{userInfo.userName?userInfo.userName:'未知'}}</view>
+        <view class='input' wx:else>
+          <input type='text'  bindblur="updateName" value="{{userInfo.userName}}" maxlength="16" confirm-type="完成" focus adjust-position="false"/>
+        </view>
+        <view class='edit' bindtap='editName' wx:if="{{!editStatus}}" >
+          <image src="../../image/edit.png"></image>
+        </view>
+      </view>
+      <view class='phone' wx:if="{{userInfo.userPhone}}">{{userInfo.userPhone}}</view>
+    </view>
+    <view class='avator'>
+      <image src="{{userInfo.wechatApplet?userInfo.wechatApplet.avatarUrl:'../../image/avatar.png'}}"></image>
+    </view>
+  </view>
+  <view class='bind_phone' wx:if="{{!userInfo.userPhone}}" bindtap='bindPhone'>
+    <view class='bind_tt'>绑定手机马上解锁更多功能</view>
+    <view class='bind_btn'>马上绑定</view>
+
+  </view>
+  <view class='content'>
+    <view class='option' bindtap='goOptions' data-type="1">
+      <view class='text'>归属学校</view>
+      <view class='action'>
+        <view class='tit'>{{infromation.school_name?infromation.school_name:'无归属学校'}}</view>
+        <view class='img'>
+          <image src='../../image/user-right.png'></image>
+        </view>
+      </view>
+    </view>
+    <view class='option' bindtap='goOptions' data-type="2">
+      <view class='text'>我的学生</view>
+      <view class='action'>
+        <view class='tit'>{{infromation.studentNum}}人</view>
+        <view class='img'>
+          <image src='../../image/user-right.png'></image>
+        </view>
+      </view>
+    </view>
+    <view class='option' bindtap='goOptions' data-type="3">
+      <view class='text'>家长管理</view>
+      <view class='action'>
+        <view class='tit'>{{infromation.parentNum}}人</view>
+        <view class='img'>
+          <image src='../../image/user-right.png'></image>
+        </view>
+      </view>
+    </view>
+    <view class='option' bindtap='goOptions' data-type="4">
+      <view class='text'>我的扫描仪</view>
+      <view class='action'>
+        <view class='tit'>{{scanNum}}台</view>
+        <view class='img'>
+          <image src='../../image/user-right.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- <view class='bind-phone'> -->
+    <bindPhone status="{{openPhone}}" isSchool="{{infromation.school_name?false:true}}" bindmyevent="closePhone"></bindPhone>
+  <!-- </view> -->
+</view>

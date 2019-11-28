@@ -1,0 +1,69 @@
+<!--pages/wrongTopic/compoents/knowladgeLost/knowladgeLost.wxml-->
+<!-- gaikuang -->
+  <view class='overview'  wx:if="{{contentArr.length>4&&studentId==0||studentId!=0}}">
+    <view class='title'>
+      <view><image mode="scaleToFill"  src="/image/cuotiji/zsddf.png"></image>知识点丢分情况</view>
+      <view class='sort' bindtap='choseKnowladge'  wx:if="{{contentArr.length>0}}">
+        排序：{{typeBar==1?'知识点总分':typeBar==2?'知识点丢分':'知识点丢分率'}}<image mode="scaleToFill"  src="/image/bottom.png"></image>
+        <cover-view class='search-wrapper' hidden='{{showSearch}}' >
+          <cover-view class='item {{typeBar==1?"active":""}}' data-info="1" catchtap='searchStudent'>知识点总分</cover-view>
+          <cover-view class='item {{typeBar==2?"active":""}}' data-info="2" catchtap='searchStudent'>知识点丢分</cover-view>
+          <cover-view class='item {{typeBar==3?"active":""}}' data-info="3" catchtap='searchStudent'>知识点丢分率</cover-view>
+        </cover-view>
+      </view>
+    </view>
+    <view class='content'>
+      <view class='item {{item.active?"active":""}}' data-index="{{index}}" data-info="{{item}}" wx:for="{{contentArr}}" wx:key="{{index}}" bindtap='showContent'>
+        <view class='describe'>{{item.xid+'、  '+item.title}}</view>
+        <view class='score-wrapper'>
+          
+          <view class='score' style="width:{{(item.fullMark/maxScore)*75}}%;">
+            <text class='score-text'>{{item.fullMark}}</text>
+            <view class='get' wx:if="{{studentId==0}}" style="width:{{(item.avg/item.fullMark)*100}}%;"><text class='get-text'>{{item.avg}}</text></view>
+            <view class='get' wx:else style="width:{{(item.studentKnowSum/item.fullMark)*100}}%;"><text class='get-text'>{{item.studentKnowSum}}</text></view>
+          </view>
+          <view wx:if="{{typeBar==3&&studentId==0}}" class='precent-num {{item.active?"active":""}}'>丢{{item.loseCenRate}}%</view>
+          <view wx:if="{{typeBar==3&&studentId!=0}}" class='precent-num {{item.active?"active":""}}'>丢{{item.precent}}%</view>
+        </view>
+        <view class='score-info' wx:if="{{item.active&&studentId==0}}">
+          <view class='score-item'>
+            <view>知识点总分</view>
+            <view>{{item.fullMark}}</view>
+          </view>
+          <view class='score-item'>
+            <view>丢分率</view>
+            <view>{{item.loseCenRate}}%</view>
+          </view>
+          <view class='score-item'>
+            <view>平均丢分</view>
+            <view>{{item.avg}}</view>
+          </view>
+          <view class='score-item' data-info="{{item}}" catchtap='toLostList'>
+            <view>丢分人数</view>
+            <view class='lose-score'>{{item.studentLoseCentNumber}}</view>
+          </view>
+        </view>
+
+        <view  class='score-info' wx:if="{{item.active&&studentId>0}}">
+          <view class='score-item'>
+            <view>知识点总分</view>
+            <view>{{item.fullMark}}</view>
+          </view>
+          <view class='score-item'>
+            <view>班级平均丢分</view>
+            <view>{{item.avg}}</view>
+          </view>
+          <view class='score-item'>
+            <view>{{studentName}}丢分</view>
+            <view>{{item.studentKnowSum}}
+              <image src='{{item.studentKnowSum>item.avg?"/image/up_img_reverse.png":item.studentKnowSum<item.avg?"/image/down_img_reverse.png":""}}'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='empty'  wx:if="{{contentArr.length==0}}">暂无数据</view>
+    <view class='load-more' wx:if="{{contentArr.length!=0&&loadMore}}"  bindtap='loadMore'>查看更多</view>
+  </view>
+
+<cover-view class='layer-wrapper' style='height:{{innerHeight}}px;' wx:if='{{!showSearch}}' bindtap='cancle'></cover-view>

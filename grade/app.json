@@ -1,0 +1,27 @@
+{
+  "pages": [
+   
+    "pages/wrongTopic/previewConfig/previewConfig",
+    "pages/wrongTopic/wrongList/wrongList",
+    "pages/wrongTopic/modules/modules",
+    "pages/wrongTopic/setClass/setClass",
+    "pages/wrongTopic/reports/reports",
+    "pages/wrongTopic/guide/guide",
+    "pages/wrongTopic/updateClass/updateClass",
+    "pages/wrongTopic/previewPDF/previewPDF",
+    
+    
+    "pages/marking/marking",
+    "pages/grade/grade",
+    "pages/login/guidePage/guidePage",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/marking/marking",
+    "pages/grade/grade",
+    "pages/login/guidePage/guidePage",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

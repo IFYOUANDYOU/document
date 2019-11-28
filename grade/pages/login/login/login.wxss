@@ -1,0 +1,148 @@
+.fadeInLogin {
+  animation: show 3s;
+}
+@keyframes show {
+from {opacity:0;}
+to {opacity:1;}
+}
+.login-wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  padding: 45rpx 60rpx 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  background:linear-gradient(0deg,rgba(255,122,0,1) 0%,rgba(255,170,0,1) 100%);
+}
+.container {
+  height: 564rpx;
+}
+
+.logo {
+  height: 129rpx;
+  width: 236rpx;
+  margin-bottom: 48rpx;
+}
+.login-wrapper .container{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+.login-wrapper .container .header{
+  display: flex;
+  justify-content: center;
+  transition: all .5s initial;
+}
+.login-wrapper .container .header .item {
+  height: 112rpx;
+  line-height: 96rpx;
+  color: #fff;
+  font-size: 32rpx;
+  text-align: center;
+  flex: 1;
+  border-top-right-radius: 24rpx;
+  border-top-left-radius: 24rpx;
+  background-color: rgba(255,255,255,.52);
+  position: relative;
+}
+.login-wrapper .container .header .active {
+  background-color: #fff;
+  color:rgba(25,25,26,1);
+  border-top-right-radius: 24rpx;
+  border-top-left-radius: 16rpx;
+}
+.login-wrapper .container .header .img-active {
+  content: '';
+  position: absolute;
+  height: 85rpx;
+  width: 40rpx;
+  right: -35rpx;
+  bottom: 15rpx;
+}
+.login-wrapper .container .header .transform-left {
+  left: -38rpx;
+  bottom: 15rpx;
+  transform: rotateY(180deg);
+}
+.login-wrapper .container .input-wrapper {
+  background-color: #fff;
+  width: 100%;
+  padding: 40rpx;
+  box-sizing: border-box;
+  border-top-right-radius: 12rpx;
+  border-bottom-left-radius: 24rpx;
+  border-bottom-right-radius: 24rpx;
+  position: absolute;
+  left: 0;
+  top: 96rpx;
+}
+.login-wrapper .container .input-wrapper .submit{
+  border-radius:48rpx;
+  background-color:#FFA800;
+}
+.login-wrapper .container .input-wrapper .submit .submit-con{
+  width:550rpx;
+  height:96rpx;
+  line-height: 96rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 32rpx;
+  background-color: rgba(255,255,255,.52);
+  border-radius:48rpx;
+  margin-top: 64rpx;
+}
+.login-wrapper .container .input-wrapper .item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid rgba(225,227,230,1);
+}
+.login-wrapper .container .input-wrapper .item input{
+  padding-left: 10rpx;
+  font-size: 32rpx;
+  flex: 1;
+  height: 99rpx;
+}
+.login-wrapper .container .input-wrapper .item .icon-1 {
+  flex: 0 0 32rpx;
+  height: 24rpx;
+}
+.login-wrapper .container .input-wrapper .item .icon-2 {
+  flex: 0 0 32rpx;
+  height: 28rpx;
+}
+.login-wrapper .container .input-wrapper .item .icon-3 {
+  flex: 0 0 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}
+.footer {
+  font-size: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #FFF;
+}
+
+.code-time {
+  width: 120rpx;
+  font-size:32rpx;
+  height: 56rpx;
+  text-align: center;
+  line-height: 56rpx;
+  background:linear-gradient(90deg,rgba(255,122,0,1) 0%,rgba(255,170,0,1) 100%);
+  border-radius:28px;
+  color: #fff;
+}
+.close {
+  flex: 0 0 24rpx;
+  height: 24rpx;
+}

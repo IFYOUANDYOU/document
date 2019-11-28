@@ -1,0 +1,64 @@
+<view class="container">
+  <!-- 第一步设置模块 -->
+  <view wx:if="{{step == 1}}" class="contain">
+    <view class="title">请选择您想要呈现在学生错题报告上的内容</view>
+    <view class="modules">
+      <!--已选好 模块-->
+      <view class="selects">
+        <view class="notice">已选模块</view>
+        <block wx:for="{{selectModule}}" wx:key="{{item.id}}">
+          <view class="item">
+            <view class="text" data-index="{{index}}" data-item="{{item}}" data-tp="1" bindtap="previewExample">
+              <view class="name">{{item.moduleName}}</view>
+              <view class="img">
+                <image mode="widthFix" src="{{item.pictureModule}}" alt="{{item.moduleName}}" title="{{item.moduleName}}"></image>
+              </view>
+            </view>
+            <view class="action" data-id="{{item.id}}" data-name="{{item.moduleName}}" data-index="{{index}}" data-tp="0" bindtap="bindSelectModule">
+              <image src="{{item.moduleName == '学生错题模块' ? '/image/wrongs/disable-icon.png' : '/image/wrongs/delete-icon.png'}}" alt="删除模块" title="删除模块"></image>
+            </view>
+          </view>
+        </block>
+      </view>
+      <!--未选择 模块-->
+      <view class="unselects">
+        <view class="notice">待选模块</view>
+        <block wx:for="{{unSelected}}" wx:key="{{item.id}}">
+          <view class="item">
+            <view class="text" data-index="{{index}}" data-item="{{item}}" data-tp="1" bindtap="previewExample">
+              <view class="name">{{item.moduleName}}</view>
+              <view class="img">
+                <image mode="widthFix" src="{{item.pictureModule}}" alt="{{item.moduleName}}" title="{{item.moduleName}}"></image>
+              </view>
+            </view>
+            <view class="action" data-id="{{item.id}}" data-index="{{index}}" data-tp="1" bindtap="bindSelectModule">
+              <image src="/image/wrongs/add-icon.png" alt="增加模块" title="增加模块"></image>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="btn choose-btn {{selectModule.length == 0 ? 'unselect' : ''}}" bindtap="selectComplete">已选好</view>
+  </view>
+  <!-- 完成模块设置 -->
+  <view wx:if="{{step == 2}}" class="contain">
+    <view class="covers">
+      <image src="/image/wrongs/cover-icon.png" mode="widthFix" class="cover-img" />
+      <view class="change-module">
+        <image src="/image/wrongs/edit-icon.png" class="edit-btn" />
+        调整
+      </view>
+    </view>
+    
+    <view class="btn complete-btn" bindtap="configModuleComplete">完成</view>
+  </view>
+  <!-- 查看各模块示例 -->
+  <view class="pouple" wx:if="{{exampleStatu}}">
+    <view class="body pouple-module">
+      <image class="closebtn" data-tp="0" bindtap="previewExample" src="/image/wrongs/close-btn.png" alt="关闭" title="关闭"></image>
+      <view class="content">
+        <image wx:if="{{example.pictureDetail}}" mode="widthFix" class="exampleImg" src="{{example.pictureDetail}}" />
+      </view>
+    </view>
+  </view>
+</view>
