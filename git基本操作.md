@@ -1,135 +1,46 @@
-常用操作命令收集：
-1) 远程仓库相关命令
-检出仓库：$ git clone git://github.com/jquery/jquery.git
-查看远程仓库：$ git remote -v
-添加远程仓库：$ git remote add [name] [url]
-删除远程仓库：$ git remote rm [name]
-修改远程仓库：$ git remote set-url --push[name][newUrl]
-拉取远程仓库：$ git pull [remoteName] [localBranchName]
-推送远程仓库：$ git push [remoteName] [localBranchName]
- 
-2）分支(branch)操作相关命令
-拉取远程分支到本地：$ git pull origin [branchName](远程分支名称)
-把远程分支拉到本地：$ git fetch origin dev（dev为远程仓库的分支名）
-查看本地分支：$ git branch
-查看远程分支：$ git branch -r
-创建本地分支：$ git branch [name] ----注意新分支创建后不会自动切换为当前分支
-切换分支：$ git checkout [name]
-创建新分支并立即切换到新分支：$ git checkout -b [name]
-删除分支：$ git branch -d [name] ---- -d选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项
-合并分支：$ git merge [name] ----将名称为[name]的分支与当前分支合并
-创建远程分支(本地分支push到远程)：$ git push origin [name]
-删除远程分支：$ git push origin :heads/[name]
-我从master分支创建了一个issue5560分支，做了一些修改后，使用git push origin master提交，但是显示的结果却是'Everything up-to-date'，发生问题的原因是git push origin master 在没有track远程分支的本地分支中默认提交的master分支，因为master分支默认指向了origin master 分支，这里要使用git push origin issue5560：master 就可以把issue5560推送到远程的master分支了。
-
-    如果想把本地的某个分支test提交到远程仓库，并作为远程仓库的master分支，或者作为另外一个名叫test的分支，那么可以这么做。
-
-$ git push origin test:master         // 提交本地test分支作为远程的master分支 //好像只写这一句，远程的github就会自动创建一个test分支
-$ git push origin test:test              // 提交本地test分支作为远程的test分支
-
-如果想删除远程的分支呢？类似于上面，如果:左边的分支为空，那么将删除:右边的远程的分支。
-
-$ git push origin :test              // 刚提交到远程的test将被删除，但是本地还会保存的，不用担心
-3）版本(tag)操作相关命令
-查看版本：$ git tag
-创建版本：$ git tag [name]
-删除版本：$ git tag -d [name]
-查看远程版本：$ git tag -r
-创建远程版本(本地版本push到远程)：$ git push origin [name]
-删除远程版本：$ git push origin :refs/tags/[name]
- 
-4) 子模块(submodule)相关操作命令
-添加子模块：$ git submodule add [url] [path]
-如：$ git submodule add git://github.com/soberh/ui-libs.git src/main/webapp/ui-libs
-初始化子模块：$ git submodule init ----只在首次检出仓库时运行一次就行
-更新子模块：$ git submodule update ----每次更新或切换分支后都需要运行一下
-删除子模块：（分4步走哦）
-1)$ git rm --cached [path]
-2) 编辑“.gitmodules”文件，将子模块的相关配置节点删除掉
-3) 编辑“.git/config”文件，将子模块的相关配置节点删除掉
-4) 手动删除子模块残留的目录
- 
-5）忽略一些文件、文件夹不提交
-在仓库根目录下创建名称为“.gitignore”的文件，写入不需要的文件夹名或文件，每个元素占一行即可，如
-target
-bin
-*.db
- 
- 
-git操作-删除文件
-日期:2012-05-20 来源: bg090721 分享至:
- 
-
-git删除文件
-
-rm add2.txt
-
-git rm add2.txt
-
-git commit -m "rm test"
-
-git push web
-
- 
-
------------at server
-
-cd /var/www/foo.git;sudo git update-server-info
-
-
-------------检查删除效果
-
-cd;rm foo3 -rf;git clone http://[某ip]/foo.git foo3
-
- 
-
-------------更新已经存在的local code
-
-cd;cd foo2
-
-git remote add web [某user]@[某ip]:/var/www/foo.git/
-
-git pull web master
-
-
-
-
-1. 在自己分支cs上提交代码：
-
-git checkout cs
-
-git add .
-
-git commit -m "add files"
-
- 
-
-2. 切换到master分支上，从远程服务器上拉下最新代码：
-
-git checkout master
-
-git pull
-
- 
-
-3. 切换到cs分支上，检查是否与master分支有冲突：
-
-git checkout cs
-
-git rebase master
-
- 
-
-4. 若有冲突，先解决冲突
-
-git add .
-
-git rebase --continue（继续解决冲突）
-
-反复执行这两步，直到所有冲突解决完成
-
- 
-
-5. 将本地代码推送到远程分支上：
-
-git push origin cs:master
+git config --global user.name "你的名字" 让你全部的Git仓库绑定你的名字
+git config --global user.email "你的邮箱" 让你全部的Git仓库绑定你的邮箱
+git init 初始化你的仓库
+git add . 把工作区的文件全部提交到暂存区
+git add ./<file>/ 把工作区的<file>文件提交到暂存区
+git commit -m "xxx" 把暂存区的所有文件提交到仓库区，暂存区空空荡荡
+git remote add origin https://github.com/name/name_cangku.git 把本地仓库与远程仓库连接起来
+git push -u origin master 把仓库区的主分支master提交到远程仓库里
+git push -u origin <其他分支> 把其他分支提交到远程仓库
+git status查看当前仓库的状态
+git diff 查看文件修改的具体内容
+git log 显示从最近到最远的提交历史
+git clone + 仓库地址下载克隆文件
+git reset --hard + 版本号 回溯版本，版本号在commit的时候与master跟随在一起
+git reflog 显示命令历史
+git checkout -- <file> 撤销命令，用版本库里的文件替换掉工作区的文件。我觉得就像是Git世界的ctrl + z
+git rm 删除版本库的文件
+git branch 查看当前所有分支
+git branch <分支名字> 创建分支
+git checkout <分支名字> 切换到分支
+git merge <分支名字> 合并分支
+git branch -d <分支名字> 删除分支,有可能会删除失败，因为Git会保护没有被合并的分支
+git branch -D + <分支名字> 强行删除，丢弃没被合并的分支
+git log --graph 查看分支合并图
+git merge --no-ff <分支名字> 合并分支的时候禁用Fast forward模式,因为这个模式会丢失分支历史信息
+git stash 当有其他任务插进来时，把当前工作现场“存储”起来,以后恢复后继续工作
+git stash list 查看你刚刚“存放”起来的工作去哪里了
+git stash apply 恢复却不删除stash内容
+git stash drop 删除stash内容
+git stash pop 恢复的同时把stash内容也删了
+git remote 查看远程库的信息，会显示origin，远程仓库默认名称为origin
+git remote -v 显示更详细的信息
+git pull 把最新的提交从远程仓库中抓取下来，在本地合并,和git push相反
+git rebase 把分叉的提交历史“整理”成一条直线，看上去更直观
+git tag 查看所有标签，可以知道历史版本的tag
+git tag <name> 打标签，默认为HEAD。比如git tag v1.0
+git tag <tagName> <版本号> 把版本号打上标签，版本号就是commit时，跟在旁边的一串字母数字
+git show <tagName> 查看标签信息
+git tag -a <tagName> -m "<说明>" 创建带说明的标签。 -a指定标签名，-m指定说明文字
+git tag -d <tagName> 删除标签
+git push origin <tagname> 推送某个标签到远程
+git push origin --tags 一次性推送全部尚未推送到远程的本地标签
+git push origin :refs/tags/<tagname> 删除远程标签<tagname>
+git config --global color.ui true 让Git显示颜色，会让命令输出看起来更醒目
+git add -f <file> 强制提交已忽略的的文件
+git check-ignore -v <file> 检查为什么Git会忽略该文件

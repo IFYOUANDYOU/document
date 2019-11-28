@@ -1,7 +1,0 @@
-{
-  "disableScroll": true,
-  "disableSwipeBack": true,
-  "usingComponents": {
-    "judge-comment": "../judge/judge"
-  }
-}
